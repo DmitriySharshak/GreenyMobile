@@ -5,7 +5,9 @@ export type TypeRootStackParamList = {
     Home: undefined,
     Cart: undefined,
     Profile: undefined,
-    Settings: undefined    
+    Settings: undefined,
+    TeamWork: undefined, 
+    Soil: undefined,   
 } & TypeRootStackAdminList
 
 type TypeRootStackAdminList = {

@@ -3,7 +3,7 @@ import React from "react"
 import { Pressable, StyleSheet, Text, View } from "react-native"
 import appTheme from "../../constants/themas"
 import Header from "../../components/Header"
-import Categories from "../../components/Categories"
+import Categories from "../../components/Categories/Categories"
 import { useNavigation } from "@react-navigation/native"
 import { useTypedNavigation } from "../../hooks/useTypedNavigation"
 

@@ -14,11 +14,7 @@ const MenuItem: FC<IMenuItemProps> = ({ currentRoute, item, nav }) => {
 
 	return (
 		<Pressable onPress={() => nav(item.path)}>
-			<Icon.Button
-				name={item.iconName}
-				size={24}
-				//color={isActive ? '#BF3335' : '#626262'}
-			/>
+			
 		</Pressable>
 	)
 }

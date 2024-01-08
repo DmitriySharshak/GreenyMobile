@@ -1,16 +1,25 @@
+import icons from "../../constants/icons";
 import { IMenuItem } from "./menu.interface";
 
 export const menuItems: IMenuItem[] = [
 	{
-		iconName: 'home',
+		iconName: icons.house,
 		path: 'Home'
 	},
 	{
-		iconName: 'shopping_cart',
+		iconName: icons.shopingCart,
 		path: 'Cart'
 	},
 	{
-		iconName: 'person',
+		iconName: icons.teamwork,
+		path: 'TeamWork'
+	},
+	{
+		iconName: icons.soil,
+		path: 'Soil'
+	},
+	{
+		iconName: icons.profile,
 		path: 'Profile'
 	}
 ]

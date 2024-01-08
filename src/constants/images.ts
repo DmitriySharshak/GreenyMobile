@@ -10,4 +10,4 @@ const oil = require('../assets/images/oil.png');
 const vegetables = require('../assets/images/vegetables.png');
 
 
-export default {berries, cheese, chicken, eggs, fruits, honey, meat, mushroom, oil, vegetables};
+export default { berries, cheese, chicken, eggs, fruits, honey, meat, mushroom, oil, vegetables};
