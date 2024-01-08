@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import { Image, Text, View, FlatList, TouchableOpacity, } from "react-native";
+import { Image, Text, View, FlatList, TouchableOpacity, Alert, } from "react-native";
 import appTheme from "../../constants/themas";
 import { categoryItems } from "./category.data";
 import { ICategoryItem } from "./category.interface";
+import themas from "../../constants/themas";
 
 const Categories = () => {
     const [categories, setCategories] = useState(categoryItems);
@@ -24,13 +25,14 @@ const Categories = () => {
     const renderItem = ({ item}: {item: ICategoryItem}) => {
         return <TouchableOpacity
         style={{
-            padding: appTheme.SIZES.padding,
-            margin: appTheme.SIZES.padding,
+            padding: 8,
+            //margin: appTheme.SIZES.padding,
             backgroundColor: (selectedItem?.id == item.id) ? appTheme.COLORS.primary : appTheme.COLORS.white,
             borderRadius: appTheme.SIZES.radius,
             alignItems: "center",
             justifyContent: "center",
             marginRight: appTheme.SIZES.padding,
+            marginTop: appTheme.SIZES.padding,
         }}
         onPress={() => onSelectItem(item)}
     >
@@ -55,10 +57,7 @@ const Categories = () => {
         </View>
 
         <Text
-            style={{ color: (selectedItem?.id == item.id) ? appTheme.COLORS.white : appTheme.COLORS.black, 
-                     ...appTheme.FONTS.body4
-            }}
-        >
+            style={{ color: (selectedItem?.id == item.id) ? appTheme.COLORS.white : appTheme.COLORS.black, ...appTheme.FONTS.body4}}>
             {item.name}
         </Text>
         
@@ -68,16 +67,15 @@ const Categories = () => {
     return (
             <View>
                 <View>
-                    <Text>Категории</Text>
+                    <Text style={{fontSize: themas.SIZES.h2}}>Категории</Text>
                 </View>
                 <FlatList
                     data={categories}
                     horizontal = {false}
-                    numColumns={3}
+                    numColumns={4}
                     showsHorizontalScrollIndicator={false}
                     keyExtractor={item => `${item.id}`}
                     renderItem={renderItem}
-                    contentContainerStyle={{ paddingVertical: appTheme.SIZES.padding * 2 }}
                 />
             </View>           
     )

@@ -9,23 +9,22 @@ import BottomMenu from "../components/bottom-menu/BottomMenu";
 const Stack = createNativeStackNavigator<TypeRootStackParamList>()
 
 const Navigation: FC = () => {
-    //const {user} = useAuth()
     const [currentRoute, setCurrentRoute] = useState<string|undefined>(undefined)
 
     const navRef = useNavigationContainerRef()
 
-    // useEffect(() => {
-    //     setCurrentRoute(navRef.getCurrentRoute()?.name)
+    useEffect(() => {
+        setCurrentRoute(navRef.getCurrentRoute()?.name)
 
-    //     const listen = navRef.addListener('state', ()   => 
-    //         setCurrentRoute(navRef.getCurrentRoute()?.name)
-    //     )
+        const listen = navRef.addListener('state', ()   => 
+            setCurrentRoute(navRef.getCurrentRoute()?.name)
+        )
 
-    //     return () => {
-    //         navRef.removeListener('state', listen);
-    //     }
+        return () => {
+            navRef.removeListener('state', listen);
+        }
 
-    // }, [])
+    }, [])
 
     return (
         <>
@@ -33,7 +32,6 @@ const Navigation: FC = () => {
             <Stack.Navigator screenOptions={{
                 headerShown: false,
                 contentStyle: {
-                    //backgroundColor:"#090909"
                 },
                 
                 }}

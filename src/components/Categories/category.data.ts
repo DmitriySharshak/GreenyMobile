@@ -42,5 +42,5 @@ export const categoryItems:Array<ICategoryItem> = [
     {   id: 10, 
         name:'Масла', 
         iconName: images.oil
-    },
+    }
 ]; 

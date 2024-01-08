@@ -1,5 +1,5 @@
 import React from "react";
-import { Linking, View, Button, Image, TouchableHighlight, StyleSheet, Text, Alert } from "react-native";
+import { View, Image, TouchableHighlight, StyleSheet, Text, Alert, TextInput } from "react-native";
 import icons from "../constants/icons";
 
 const styles = StyleSheet.create({
@@ -13,27 +13,38 @@ const styles = StyleSheet.create({
   header_left :{
     flexDirection: "row",
     justifyContent: 'space-between',
-    width:70
-  }
+    width:330
+  },
+
+  input: {
+    height: 35,
+    width: '100%',
+    borderWidth: 1,
+    padding: 10,
+  },
 })
 
 const Header = () => {
+    var value: string = "11";
+
+    function onChangeFilter(text: string) {
+        
+    }
+
     return <View style={styles.header}>
              <TouchableHighlight onPress={() => Alert.alert("Сайт")}>
-                <Image source={icons.profile} style={{width:30, height:30}}/>
+                <Image source={icons.menu} style={{width:30, height:30}}/>
              </TouchableHighlight>
-             <Text></Text>
             <View style={styles.header_left}>
-            <TouchableHighlight onPress={() => Alert.alert("Корзина") }>
-                <Image source={icons.shopingCart} style={{width:30, height:30}}/>
-            </TouchableHighlight>
-            <TouchableHighlight onPress={() => Alert.alert("Корзина") }>
-            <Image source={icons.bell} style={{ width: 30, height: 30,}} />
-            </TouchableHighlight>   
-                
-                
+              <TextInput
+                style={styles.input}
+                onChangeText={onChangeFilter}
+                //value={value}
+                placeholder="хочу найти..."
+              />
             </View>
            </View>
 }
+
 
 export default Header;

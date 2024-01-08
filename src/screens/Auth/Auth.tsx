@@ -4,7 +4,7 @@ import { Text, View } from "react-native"
 const Auth:  FC = () => {
     return (
          <View>
-            <Text>Аутонтификация</Text>
+            <Text>Аутентификация</Text>
          </View>
     )
 }

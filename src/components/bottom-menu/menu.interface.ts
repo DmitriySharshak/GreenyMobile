@@ -1,10 +1,9 @@
 
 import { TypeRootStackParamList } from '../../navigation/navigation.types'
 
-//export type TypeFeatherIconNames = keyof typeof glyphMap                         
-
 export interface IMenuItem {
-    iconName: string
+    name: string
+    iconName: any
     path: keyof TypeRootStackParamList
 }
 
