@@ -1,0 +1,11 @@
+{
+  "name": "greeny",
+  "displayName": "greeny",
+  "icon":"./src/assets/images/meat.png",
+  "splash":{
+    "image":"./src/assets/images/honey.png",
+    "resizeMode":"contain",
+    "backgroundColor":"#ffffff"
+  }
+  
+}
