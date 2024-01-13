@@ -4,20 +4,19 @@ import { Image, Pressable } from 'react-native'
 import type { IMenuItem, TypeNavigate } from './menu.interface'
 import { View } from 'react-native'
 import { useTypedNavigation } from '../../hooks/useTypedNavigation'
-import appTheme from '../../constants/themas'
 import { Text } from 'react-native'
 
 interface IMenuItemProps {
 	item: IMenuItem
-	nav: TypeNavigate
+	navigate: TypeNavigate
 	currentRoute?: string
 }
 
-const MenuItem: FC<IMenuItemProps> = ({ currentRoute, item, nav }) => {
+const MenuItem: FC<IMenuItemProps> = ({ currentRoute, item, navigate }) => {
 	const isActive = currentRoute === item.path
 	
 	return (
-		<Pressable onPress={() => nav(item.path)}>
+		<Pressable onPress={() => navigate(item.path)}>
 			<View
 				style={{
 					alignItems: "center",

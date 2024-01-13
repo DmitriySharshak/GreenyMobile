@@ -4,12 +4,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TypeRootStackParamList } from "./navigation.types";
 import { userRoutes } from "./user.routes";
 import BottomMenu from "../components/bottom-menu/BottomMenu";
+import Home from "../screens/Home/Home";
+import Profile from "../screens/Profile/Profile";
 
 
 const Stack = createNativeStackNavigator<TypeRootStackParamList>()
 
 const Navigation: FC = () => {
-    const [currentRoute, setCurrentRoute] = useState<string|undefined>(undefined)
+    const [currentRoute, setCurrentRoute] = useState<string | undefined>(undefined)
 
     const navRef = useNavigationContainerRef()
 
@@ -28,21 +30,15 @@ const Navigation: FC = () => {
 
     return (
         <>
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{
-                headerShown: false,
-                contentStyle: {
-                },
-                
-                }}
-                initialRouteName={'Home'}        
-            >
+        <NavigationContainer ref={navRef}>
+            <Stack.Navigator screenOptions={{headerShown: false, }} initialRouteName="Home">
                 {userRoutes.map(route => (
                     <Stack.Screen key={route.name} {...route}  /> 
-                ))}
+                ))} 
+
             </Stack.Navigator>
         </NavigationContainer>
-        <BottomMenu nav={navRef.navigate} currentRoute="{currentRoute}" ></BottomMenu>
+        <BottomMenu navigate={navRef.navigate} currentRoute="{currentRoute}" ></BottomMenu>
         </>
         
     )

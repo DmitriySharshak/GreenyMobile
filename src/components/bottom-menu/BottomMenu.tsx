@@ -7,7 +7,7 @@ import { StyleSheet } from "react-native";
 
 
 interface IBottomMenu {
-	nav: TypeNavigate
+	navigate: TypeNavigate
 	currentRoute?: string
 }
 
