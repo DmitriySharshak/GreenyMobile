@@ -1,15 +1,16 @@
 import { FC } from "react";
 import { Image, View, Text, TouchableOpacity } from "react-native";
 import appTheme from "../constants/themas";
-import { IItem } from "../types/item.interface";
 
 interface IItemProps {
-	item: IItem
+	id: number
+    name: string
+    iconName: any
 	selectedItem: boolean 
-    setSelectedItem: (item: IItem) => void
+    setSelectedItem: (id: number) => void
 }
 
-const Item: FC<IItemProps>= ({item, selectedItem, setSelectedItem}) => {
+const Item: FC<IItemProps>= ({id, name, iconName, selectedItem, setSelectedItem}) => {
     
     return <>
        <TouchableOpacity
@@ -22,7 +23,7 @@ const Item: FC<IItemProps>= ({item, selectedItem, setSelectedItem}) => {
             marginRight: appTheme.SIZES.padding,
             marginTop: appTheme.SIZES.padding,
         }}
-        onPress={() => setSelectedItem(item)}
+        onPress={() => setSelectedItem(id)}
         >
 
         <View  
@@ -35,7 +36,7 @@ const Item: FC<IItemProps>= ({item, selectedItem, setSelectedItem}) => {
                 backgroundColor: (selectedItem) ? appTheme.COLORS.white : appTheme.COLORS.lightGray
             }}>
             <Image 
-                source={item.iconName}
+                source={iconName}
                 resizeMode="contain"
                 style={{
                     width: 35,
@@ -43,9 +44,9 @@ const Item: FC<IItemProps>= ({item, selectedItem, setSelectedItem}) => {
                 }} />
         </View>
 
-        <Text
+        <Text 
             style={{ color: (selectedItem) ? appTheme.COLORS.white : appTheme.COLORS.black, ...appTheme.FONTS.body4}}>
-            {item.name}
+            {name}
         </Text>
         
         </TouchableOpacity>

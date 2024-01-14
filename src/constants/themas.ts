@@ -6,7 +6,8 @@ const COLORS = {
   black: '#1E1F20',
   white: '#FFFFFF',
 
-  primary: "#FC6D3F", // orange
+  primary: "#21BA72", // green
+  
   secondary: "#CDCDD2",   // gray
 
   lightGray: "#F5F5F6",

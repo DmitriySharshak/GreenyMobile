@@ -1,3 +1,6 @@
+/**
+ * Категории продуктов
+ */
 const berries = require('../assets/images/berries.png');
 const cheese = require('../assets/images/cheese.png');
 const chicken = require('../assets/images/chicken.png');
@@ -10,4 +13,13 @@ const oil = require('../assets/images/oil.png');
 const vegetables = require('../assets/images/vegetables.png');
 
 
-export default { berries, cheese, chicken, eggs, fruits, honey, meat, mushroom, oil, vegetables};
+/**
+ * Подкатегории продуктов
+ */
+const cow = require('../assets/images/cow.png');
+const sheep = require('../assets/images/sheep.png');
+
+
+
+export default { berries, cheese, chicken, eggs, fruits, honey, meat, mushroom, oil, vegetables, 
+                cow, sheep};

@@ -1,16 +1,18 @@
-import React, {useState} from "react";
+import React, {useCallback, useRef, useState} from "react";
 import { Text, View } from "react-native";
 import themas from "../constants/themas";
 import Item from "./Item";
-import HorizontalList from "./HorizontalList";
 import VerticalList from "./VerticalList";
-import { IItem } from "../types/item.interface";
+import { ICategoryItem, ISubCategoryItem } from "../types/categoryItem.interface";
 import images from "../constants/images";
+import { FlatList } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
+import HorizontalList from "./HorizontalList";
 
-const categoryItems:Array<IItem> = [
+const categoryItems:Array<ICategoryItem> = [
     {   id: 1, 
         name:'Мясо', 
-        iconName: images.meat
+        iconName: images.meat,
     },
     {   id: 2, 
         name:'Молоко +', 
@@ -51,28 +53,80 @@ const categoryItems:Array<IItem> = [
     }
 ]; 
 
+const subCategories: Array<ISubCategoryItem> = [
+    {   id: 1, 
+        categoryId: 1,
+        name:'Говядина', 
+        iconName: images.meat,
+    },
+    {   id: 2, 
+        categoryId: 1,
+        name:'Свинина', 
+        iconName: images.meat,
+    },
+    {   id: 3, 
+        categoryId: 1,
+        name:'Баранина', 
+        iconName: images.meat,
+    },
+    {   id: 4, 
+        categoryId: 1,
+        name:'Телятина', 
+        iconName: images.cow,
+    },
+    {   id: 5, 
+        categoryId: 1,
+        name:'Дичь', 
+        iconName: images.meat,
+    },
+]
+
 const CategoryList = () => {
     const [categories, setCategories] = useState(categoryItems);
-    const [selectedItem, setSelectedItem] = useState<IItem | null>(null);
+    const [selectedItem, setSelectedItem] = useState<ICategoryItem | null>(null);
+    const [index, setIndex] = useState<number>(0);
 
-    function onSelectItem(category: IItem) {
-        setSelectedItem(category)
+    function onSelectItem(id: number) {
+        let item = categories.find((item)=> item.id == id);
+        if(item) {
+            setSelectedItem(item);
+        }
+
+        let index = categories.indexOf(item);
+        setIndex(index);
     }
-    
 
-    const renderItem = ({item}: {item: IItem}) => {
-        return <Item item={item} selectedItem={selectedItem?.id===item.id} setSelectedItem={onSelectItem}  />
+    const getItemLayout = (data:ArrayLike<ICategoryItem>, index:number) => ({
+        length: 97,
+        offset: 97 * index,
+        index,
+      })
+
+    
+    const renderItem = ({item}: {item: ICategoryItem}) => {
+        return <Item {...item} selectedItem={selectedItem?.id===item.id} setSelectedItem={onSelectItem}  />
     }
 
     if(selectedItem) {
-        return <HorizontalList
-                snapToInterval={100}
-                data={categories}
-                //keyExtractor={ item => `${item.id}`}
-                extraData={selectedItem}
-                // @ts-ignore
-                renderItem={renderItem}
-                />
+    //     return <FlatList
+    //     horizontal
+    //     renderToHardwareTextureAndroid
+    //     showsHorizontalScrollIndicator={false}
+    //     scrollEventThrottle={16}
+    //     data={categories} 
+    //     renderItem={renderItem}
+    //     //extraData={selectedItem} 
+    //     //keyExtractor={item => `${item.id}`} 
+    //     getItemLayout={getItemLayout}
+    //     initialScrollIndex={selectedItem.id-1}
+    // />
+        return <HorizontalList 
+            snapToInterval={100}
+            data={categories} 
+            // @ts-ignore
+            renderItem={renderItem}
+            getItemLayout={getItemLayout}
+            initialScrollIndex={index} />
     }
     
     return (
