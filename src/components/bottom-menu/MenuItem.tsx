@@ -1,15 +1,16 @@
 import { FC } from 'react'
-import { Image, Pressable } from 'react-native'
+import { Alert, Image, Pressable } from 'react-native'
 
 import type { IMenuItem, TypeNavigate } from './menu.interface'
 import { View } from 'react-native'
 import { useTypedNavigation } from '../../hooks/useTypedNavigation'
 import { Text } from 'react-native'
+import themas from '../../constants/themas'
 
 interface IMenuItemProps {
 	item: IMenuItem
 	navigate: TypeNavigate
-	currentRoute?: string
+	currentRoute: string | undefined
 }
 
 const MenuItem: FC<IMenuItemProps> = ({ currentRoute, item, navigate }) => {
@@ -23,7 +24,7 @@ const MenuItem: FC<IMenuItemProps> = ({ currentRoute, item, navigate }) => {
                 	justifyContent: "center",
 				}}>
 				<Image
-				source={item.iconName}
+				source={isActive ? item.iconNameActive : item.iconName}
                 resizeMode="contain"
                 style={{
                     width: 35,
@@ -31,7 +32,10 @@ const MenuItem: FC<IMenuItemProps> = ({ currentRoute, item, navigate }) => {
                 }} >
 					
 				</Image>
-				<Text>
+				<Text style={{
+					color: isActive ? themas.COLORS.primary: themas.COLORS.secondary	
+
+				}}>
             		{item.name}
         		</Text>
 			</View>

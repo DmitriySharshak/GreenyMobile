@@ -1,30 +1,36 @@
 import icons from "../../constants/icons";
+import images from "../../constants/images";
 import { IMenuItem } from "./menu.interface";
 
 export const menuItems: IMenuItem[] = [
 	{
 		name: "Главная",
-		iconName: icons.house,
+		iconName: images.homeGrey,
+		iconNameActive: images.homeGreen,
 		path: 'Home'
 	},
 	{
 		name: "Корзина",
-		iconName: icons.shopingCart,
+		iconName: images.cartGrey,
+		iconNameActive: images.cartGreen,
 		path: 'Cart'
 	},
 	{
 		name: "Совместно",
-		iconName: icons.teamwork,
+		iconName: images.networkGrey,
+		iconNameActive: images.networkGreen,
 		path: 'TeamWork'
 	},
 	{
 		name: "Вырастить",
-		iconName: icons.soil,
+		iconName: images.gardenGrey,
+		iconNameActive: images.gardenGreen,
 		path: 'Soil'
 	},
 	{
 		name: "Профиль",
-		iconName: icons.profile,
+		iconName: images.profileGrey,
+		iconNameActive: images.profileGreen,
 		path: 'Profile'
 	}
 ]

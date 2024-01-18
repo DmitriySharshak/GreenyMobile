@@ -11,11 +11,11 @@ interface IBottomMenu {
 	currentRoute?: string
 }
 
-const BottomMenu: FC<IBottomMenu> = props => {
+const BottomMenu: FC<IBottomMenu> = ({navigate, currentRoute}) => {
     return (
         <View style ={styles.footer}>
             {menuItems.map(item => (
-				<MenuItem key={item.path} item={item} {...props} />
+				<MenuItem key={item.path} item={item} navigate={navigate} currentRoute={currentRoute} />
 			))}
         </View>
     )

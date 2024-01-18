@@ -6,21 +6,23 @@ import { userRoutes } from "./user.routes";
 import BottomMenu from "../components/bottom-menu/BottomMenu";
 import Home from "../screens/Home/Home";
 import Profile from "../screens/Profile/Profile";
+import { Alert } from "react-native";
 
 
 const Stack = createNativeStackNavigator<TypeRootStackParamList>()
 
 const Navigation: FC = () => {
+    const navRef = useNavigationContainerRef()
     const [currentRoute, setCurrentRoute] = useState<string | undefined>(undefined)
 
-    const navRef = useNavigationContainerRef()
+    
 
     useEffect(() => {
         setCurrentRoute(navRef.getCurrentRoute()?.name)
 
-        const listen = navRef.addListener('state', ()   => 
+        const listen = navRef.addListener('state', ()   => {
             setCurrentRoute(navRef.getCurrentRoute()?.name)
-        )
+        })
 
         return () => {
             navRef.removeListener('state', listen);
@@ -38,7 +40,7 @@ const Navigation: FC = () => {
 
             </Stack.Navigator>
         </NavigationContainer>
-        <BottomMenu navigate={navRef.navigate} currentRoute="{currentRoute}" ></BottomMenu>
+        <BottomMenu navigate={navRef.navigate} currentRoute={currentRoute} ></BottomMenu>
         </>
         
     )

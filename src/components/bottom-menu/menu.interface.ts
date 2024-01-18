@@ -4,6 +4,7 @@ import { TypeRootStackParamList } from '../../navigation/navigation.types'
 export interface IMenuItem {
     name: string
     iconName: any
+    iconNameActive: any
     path: keyof TypeRootStackParamList
 }
 
