@@ -297,8 +297,8 @@ const Home = () => {
                 paddingRight: appTheme.SIZES.padding  
             }}>
              {Header()}
-             <CategoryList caption="Категории" items={categories} onSelectedHandler={onSelectedCategory}></CategoryList>
-             <CategoryList caption="Подкатегории" items={subCategories} onSelectedHandler={onSelectedSubCategory}></CategoryList> 
+             <CategoryList key={1} caption="Категории" items={categories} onSelectedHandler={onSelectedCategory}></CategoryList>
+             <CategoryList key={2} caption="Подкатегории" items={subCategories} onSelectedHandler={onSelectedSubCategory}></CategoryList> 
 
              {/* <Button
                 title="Go to profile"
