@@ -21,8 +21,9 @@ const COLORS = {
 const SIZES = {
   base: 8,
   font: 14,
-  radius: 12,
-  padding: 12,
+  radius: 8,
+  padding: 8,
+  margin: 8,
 
   // font size
   h1: 30,

@@ -11,7 +11,7 @@ const ProfileScreen:  FC = () => {
             <Button
                 title="Go to home"
                 onPress={() =>
-                    navigate('Home')}/>
+                    navigate('HomeScreen')}/>
          </View>
     )
 }

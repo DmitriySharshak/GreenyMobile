@@ -9,6 +9,7 @@ import { useTypedNavigation } from "../hooks/useTypedNavigation"
 import { ICategoryItem, ISubCategoryItem } from "../types/categoryItem.interface"
 import images from "../constants/images"
 import { Text } from "react-native"
+import ProductIcon, { IProductIcon } from "../components/ProductIcon"
 
 const categoryItems:Array<ICategoryItem> = [
     {   id: 1, 
@@ -277,11 +278,11 @@ const subCategoryItems: Array<ISubCategoryItem> = [
 ]
 
 const HomeScreen = () => {
-    let subCategoriesCache = subCategoryItems.map(q=>q);  
+    const subCategoriesCache = subCategoryItems.map(q=>q);  
     const { navigate } = useTypedNavigation();
     const [categories, setCategories] = useState(categoryItems);
     const [subCategories, setSubCategories] = useState(subCategoryItems);
-    const [product, setProduct] = useState(subCategoryItems);
+    const [productList, setProductList] = useState<IProductIcon[] | null>(null);
 
     function onSelectedCategory(id: number) {
         let items = subCategoriesCache.filter((item)=> item.categoryId == id);
@@ -289,13 +290,47 @@ const HomeScreen = () => {
     }
 
     function onSelectedSubCategory(id: number) {
-        navigate("ProductScreen");
-
-
-        //let item = subCategories.filter((item)=> item.id == id)   
-        //if(item) {
-        //    
-        //} 
+        const item = subCategories.find((item)=> item.id == id)   
+        if(item) {
+            const modal: IProductIcon[] = [
+                {
+                id: 1,
+                name: 'Творог из коровьего молока 10%',
+                priceMin: 120,
+                priceMax: 150,
+                unitOfMeasurement:"кг",
+                minCount: 1,
+                step:0.5,
+                iconName: item.iconName,
+                navigate: navigate
+                },
+                {
+                    id: 2,
+                    name: 'Творог из коровьего молока 5%',
+                    priceMin: 90,
+                    priceMax: 120,
+                    unitOfMeasurement:"кг",
+                    minCount: 1,
+                    step:0.1,
+                    iconName: item.iconName,
+                    navigate: navigate
+                    },
+                    {
+                        id: 3,
+                        name: 'Творог из коровьего молока 5%',
+                        priceMin: 90,
+                        priceMax: 120,
+                        unitOfMeasurement:"кг",
+                        minCount: 1,
+                        step:0.1,
+                        iconName: item.iconName,
+                        navigate: navigate
+                        }
+        ];
+            
+            setProductList(modal)
+            
+        } 
     }
 
     return (<>
@@ -307,12 +342,20 @@ const HomeScreen = () => {
 
              <CategoryList key={1} caption="Категории" items={categories} onSelectedHandler={onSelectedCategory}></CategoryList>
              <CategoryList key={2} caption="Подкатегории" items={subCategories} onSelectedHandler={onSelectedSubCategory}></CategoryList> 
+             
+             <View style={{
+                flexDirection: "row",
+                flexWrap: "wrap",
+                justifyContent:"flex-start"
+             }}>
+                {productList?.map(item => (
+                    <ProductIcon key={item.id} {...item}/>
+                ))}
+             </View>
+             
 
-
-             {/* <Button
-                title="Go to profile"
-                onPress={() =>
-                    navigate('Profile')}/> */}
+             
+                
             </View>
             </>
     )
