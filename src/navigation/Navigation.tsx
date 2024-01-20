@@ -4,8 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TypeRootStackParamList } from "./navigation.types";
 import { userRoutes } from "./user.routes";
 import BottomMenu from "../components/bottom-menu/BottomMenu";
-import Home from "../screens/Home/Home";
-import Profile from "../screens/Profile/Profile";
+import HomeScreen from "../screens/HomeScreen";
+import ProfileScreen from "../screens/ProfileScreen";
 import { Alert } from "react-native";
 
 

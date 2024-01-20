@@ -1,13 +1,45 @@
 import { ComponentType } from "react"
 
 export type TypeRootStackParamList = {
-    Auth: undefined,
-    Home: undefined,
-    Cart: undefined,
-    Profile: undefined,
-    Settings: undefined,
-    TeamWork: undefined, 
-    Soil: undefined,   
+    /**
+     * Страница аутентификации
+     */
+    AuthScreen: undefined,
+    
+    /**
+     * Домашнаяя страница
+     */
+    HomeScreen: undefined,
+
+    /**
+     * Корзина 
+     */
+    CartScreen: undefined,
+
+    /**
+     * Профиль пользователя
+     */
+    ProfileScreen: undefined,
+
+    /**
+     * Настройки 
+     */
+    SettingsScreen: undefined,
+
+    /**
+     * Страница совместных закупок
+     */
+    TeamWorkScreen: undefined, 
+
+    /**
+     * Страница контрактного фермерства
+     */
+    SoilScreen: undefined,
+
+    /**
+     * Страница продукта
+     */
+    ProductScreen: undefined   
 } & TypeRootStackAdminList
 
 type TypeRootStackAdminList = {

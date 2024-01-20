@@ -1,13 +1,13 @@
 
 import React, { useState } from "react"
 import {Alert, View } from "react-native"
-import appTheme from "../../constants/themas"
-import Header from "../../components/Header"
-import CategoryList from "../../components/CategoryList"
+import appTheme from "../constants/themas"
+import Header from "../components/Header"
+import CategoryList from "../components/CategoryList"
 import { Button } from "react-native"
-import { useTypedNavigation } from "../../hooks/useTypedNavigation"
-import { ICategoryItem, ISubCategoryItem } from "../../types/categoryItem.interface"
-import images from "../../constants/images"
+import { useTypedNavigation } from "../hooks/useTypedNavigation"
+import { ICategoryItem, ISubCategoryItem } from "../types/categoryItem.interface"
+import images from "../constants/images"
 import { Text } from "react-native"
 
 const categoryItems:Array<ICategoryItem> = [
@@ -205,7 +205,7 @@ const subCategoryItems: Array<ISubCategoryItem> = [
     {   id: 30, 
         categoryId: 6,
         name:'Земляника', 
-        iconName:images.strawberry,
+        iconName:images.strawberry_2,
     },
     {   id: 31, 
         categoryId: 6,
@@ -215,7 +215,7 @@ const subCategoryItems: Array<ISubCategoryItem> = [
     {   id: 32, 
         categoryId: 6,
         name:'Брусника', 
-        iconName:images.strawberry,
+        iconName:images.cowberry,
     },
     {   id: 33, 
         categoryId: 6,
@@ -225,7 +225,7 @@ const subCategoryItems: Array<ISubCategoryItem> = [
     {   id: 34, 
         categoryId: 6,
         name:'Клубника', 
-        iconName:images.strawberry,
+        iconName:images.strawberry_1,
     },
     {   id: 35, 
         categoryId: 6,
@@ -235,7 +235,7 @@ const subCategoryItems: Array<ISubCategoryItem> = [
     {   id: 36, 
         categoryId: 6,
         name:'Малина', 
-        iconName:images.currant,
+        iconName:images.raspberries,
     },
     {   id: 37, 
         categoryId: 6,
@@ -276,11 +276,12 @@ const subCategoryItems: Array<ISubCategoryItem> = [
     },
 ]
 
-const Home = () => {
+const HomeScreen = () => {
     let subCategoriesCache = subCategoryItems.map(q=>q);  
     const { navigate } = useTypedNavigation();
     const [categories, setCategories] = useState(categoryItems);
     const [subCategories, setSubCategories] = useState(subCategoryItems);
+    const [product, setProduct] = useState(subCategoryItems);
 
     function onSelectedCategory(id: number) {
         let items = subCategoriesCache.filter((item)=> item.categoryId == id);
@@ -288,7 +289,13 @@ const Home = () => {
     }
 
     function onSelectedSubCategory(id: number) {
-        
+        navigate("ProductScreen");
+
+
+        //let item = subCategories.filter((item)=> item.id == id)   
+        //if(item) {
+        //    
+        //} 
     }
 
     return (<>
@@ -297,8 +304,10 @@ const Home = () => {
                 paddingRight: appTheme.SIZES.padding  
             }}>
              {Header()}
+
              <CategoryList key={1} caption="Категории" items={categories} onSelectedHandler={onSelectedCategory}></CategoryList>
              <CategoryList key={2} caption="Подкатегории" items={subCategories} onSelectedHandler={onSelectedSubCategory}></CategoryList> 
+
 
              {/* <Button
                 title="Go to profile"
@@ -310,4 +319,4 @@ const Home = () => {
 }
 
 
-export default Home;
+export default HomeScreen;

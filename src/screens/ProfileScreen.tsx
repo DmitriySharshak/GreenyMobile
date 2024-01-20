@@ -1,9 +1,9 @@
 import { FC } from "react"
 import { Text, View } from "react-native"
-import { useTypedNavigation } from "../../hooks/useTypedNavigation"
+import { useTypedNavigation } from "../hooks/useTypedNavigation"
 import { Button } from "react-native"
 
-const Profile:  FC = () => {
+const ProfileScreen:  FC = () => {
     const { navigate } = useTypedNavigation()
     return (
          <View>
@@ -16,4 +16,4 @@ const Profile:  FC = () => {
     )
 }
 
-export default Profile;
+export default ProfileScreen;

@@ -1,12 +1,12 @@
 import { FC } from "react"
 import { Text, View } from "react-native"
 
-const Admin:  FC = () => {
+const CartScreen:  FC = () => {
     return (
          <View>
-            <Text>Admin</Text>
+            <Text>Корзина с покупками</Text>
          </View>
     )
 }
 
-export default Admin;
+export default CartScreen;

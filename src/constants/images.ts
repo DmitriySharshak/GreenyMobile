@@ -49,8 +49,12 @@ const pear = require('../assets/images/fruits/pear.png');
 const plum = require('../assets/images/fruits/plum.png');
 
 const blueberry = require('../assets/images/berries/blueberry.png');
-const strawberry = require('../assets/images/berries/strawberry.png');
-const cranberry = require('../assets/images/berries/cranberry.png');
+const strawberry_1 = require('../assets/images/berries/strawberry_1.png'); //клубника
+const strawberry_2 = require('../assets/images/berries/strawberry_2.png'); //земляника
+const cowberry = require('../assets/images/berries/cowberry.png');         //брусника
+const raspberries = require('../assets/images/berries/raspberries.png');   //малина
+
+const cranberry = require('../assets/images/berries/cranberry.png');   
 const currant = require('../assets/images/berries/currant.png');
 const gooseberry = require('../assets/images/berries/gooseberry.png');
 
@@ -81,7 +85,7 @@ export default { berries, milkCheese, chicken, fruits, honey, meat, mushroom, oi
                 subChicken, chick, goose, duck, turkey, eggs,
                 beetroot, cabbage, carrot, cucumber, garlic, greens, onion, potato, tomato,
                 apple, cherries, pear, plum,
-                blueberry, strawberry, cranberry, currant, gooseberry,
+                blueberry, strawberry_1,strawberry_2, raspberries, cowberry, cranberry, currant, gooseberry,
                 mushroomWhite,chanterelle,
                 apitherapy, subHoney, wax, honeycomb,
                 cartGrey, cartGreen, homeGrey, homeGreen, networkGrey, networkGreen, profileGrey, profileGreen, gardenGrey, gardenGreen};

@@ -1,12 +1,13 @@
 
-import Auth from "../screens/Auth/Auth";
-import Cart from "../screens/Cart/Cart";
-import Home from "../screens/Home/Home";
-import Profile from "../screens/Profile/Profile";
-import Settings from "../screens/Settings/Settings";
-import Teamwork from "../screens/TeamWork/Teamwork";
-import Soil from "../screens/Soil/Soil";
+import Auth from "../screens/AuthScreen";
+import CartScreen from "../screens/CartScreen";
+import HomeScreen from "../screens/HomeScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import SettingsScreen from "../screens/SettingsScreen";
+import Teamwork from "../screens/TeamworkScreen";
+import SoilScreen from "../screens/SoilScreen";
 import { IRoute } from "./navigation.types";
+import ProductScreen from "../screens/ProductScreen";
 
 export const userRoutes: IRoute[] = [
       {
@@ -15,19 +16,19 @@ export const userRoutes: IRoute[] = [
       },
       {
         name: "Home",
-        component: Home
+        component: HomeScreen
       },
       {
         name: "Cart",
-        component: Cart
+        component: CartScreen
       },
       {
         name: "Settings",
-        component: Settings
+        component: SettingsScreen
       },
       {
         name: "Profile",
-        component: Profile
+        component: ProfileScreen
       },
       {
         name: "TeamWork",
@@ -35,6 +36,10 @@ export const userRoutes: IRoute[] = [
       },
       {
         name: "Soil",
-        component: Soil
+        component: SoilScreen
+      },
+      {
+        name: "ProductScreen",
+        component: ProductScreen
       }
 ]

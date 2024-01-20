@@ -1,9 +1,8 @@
 import { FC } from 'react'
-import { Alert, Image, Pressable } from 'react-native'
+import { Image, Pressable } from 'react-native'
 
 import type { IMenuItem, TypeNavigate } from './menu.interface'
 import { View } from 'react-native'
-import { useTypedNavigation } from '../../hooks/useTypedNavigation'
 import { Text } from 'react-native'
 import themas from '../../constants/themas'
 

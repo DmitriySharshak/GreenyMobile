@@ -1,12 +1,12 @@
 import { FC } from "react"
 import { Text, View } from "react-native"
 
-const Soil:  FC = () => {
+const AdminScreen:  FC = () => {
     return (
          <View>
-            <Text>Вырастить</Text>
+            <Text>Admin</Text>
          </View>
     )
 }
 
-export default Soil;
+export default AdminScreen;
