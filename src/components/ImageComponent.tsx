@@ -5,26 +5,27 @@ import appTheme from "../constants/themas";
 
 export interface IImageComponent {
     selected: boolean
-    iconName: any
+    iconName: any,
+    size: number, 
 }
 
-const ImageComponent:FC<IImageComponent>=({selected, iconName})=> {
+const ImageComponent:FC<IImageComponent>=({selected, iconName, size})=> {
+
     return <View
             style={{
-            width: 70,
-            height: 70,
-            borderRadius: 35,
             backgroundColor: (selected) ? appTheme.COLORS.white : appTheme.COLORS.lightGray,
             alignItems: "center",
             justifyContent: "center",
+            width: size,
+            height: size,
+            borderRadius: size/2
             }}>
             <Image 
                 source={iconName}
                 resizeMode="contain"
                 style={{
-                    width: 35,
-                    height: 35
-                }} />
+                    width: size / 2,
+                    height: size / 2 }} />
         </View>
 }
 

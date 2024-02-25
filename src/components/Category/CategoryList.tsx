@@ -1,10 +1,7 @@
 import React, {FC, useState} from "react";
-import { Text, View } from "react-native";
-import themas from "../constants/themas";
-import Item from "./Item";
-import VerticalList from "./VerticalList";
-import { ICategoryItem} from "../types/categoryItem.interface";
-import HorizontalList from "./HorizontalList";
+import Item from "../Item";
+import { ICategoryItem} from "../../types/categoryItem.interface";
+import HorizontalList from "../HorizontalList";
 
 interface ICategoryProps {
     caption: string
@@ -26,10 +23,10 @@ const CategoryList: FC<ICategoryProps> = ({caption, items, onSelectedHandler}) =
             setIndex(index);
         }
     }
-
+    //97 - надо подбирать цифры
     const getItemLayout = (data:ArrayLike<ICategoryItem>, index:number) => ({
-        length: 97,
-        offset: 97 * index,
+        length: 35,
+        offset: 35 * index,
         index,
       })
 
@@ -37,29 +34,31 @@ const CategoryList: FC<ICategoryProps> = ({caption, items, onSelectedHandler}) =
         return <Item {...item} selectedItem={selectedItem?.id===item.id} setSelectedItem={onSelectItem}  />
     }
 
-    if(selectedItem) {
-        return <HorizontalList 
+    return <HorizontalList 
             snapToInterval={100}
             data={items} 
             // @ts-ignore
             renderItem={renderItem}
             getItemLayout={getItemLayout}
             initialScrollIndex={index} />
-    }
     
-    return (
-            <View>
-                <View>
-                    <Text style={{fontSize: themas.SIZES.h2}}>{caption}</Text>
-                </View>
-                <VerticalList
-                    snapToInterval={100}
-                    data={items}
-                    // @ts-ignore
-                    renderItem={renderItem}
-                />
-            </View>           
-    )
+    // if(selectedItem) {
+        
+    // }
+    
+    // return (
+    //         <View>
+    //             <View>
+    //                 <Text style={{fontSize: themas.SIZES.h2}}>{caption}</Text>
+    //             </View>
+    //             <VerticalList
+    //                 snapToInterval={100}
+    //                 data={items}
+    //                 // @ts-ignore
+    //                 renderItem={renderItem}
+    //             />
+    //         </View>           
+    // )
 }
 
 export default CategoryList 

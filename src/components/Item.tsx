@@ -16,11 +16,11 @@ const Item: FC<IItemProps>= ({id, name, iconName, selectedItem, setSelectedItem}
     
     return <>
        <TouchableComponent onPress={()=>setSelectedItem(id)} selected={selectedItem}>
-        <ImageComponent iconName={iconName} selected={selectedItem}></ImageComponent>
+        <ImageComponent iconName={iconName} selected={selectedItem} size={40}></ImageComponent>
 
-        <Text style={{ color: (selectedItem) ? appTheme.COLORS.white : appTheme.COLORS.black, ...appTheme.FONTS.body4}}>
+        {/* <Text style={{ color: (selectedItem) ? appTheme.COLORS.white : appTheme.COLORS.black, ...appTheme.FONTS.body4}}>
             {name}
-        </Text>
+        </Text> */}
         </TouchableComponent> 
     </>
 }

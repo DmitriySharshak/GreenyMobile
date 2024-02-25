@@ -1,8 +1,22 @@
-import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 import Toast from 'react-native-toast-message'
 
-import { errorCatch } from './api.error'
-import instance from './api.interceptor'
+const API_URL = 'https://greenyfarm/api/v1';
+
+const instance = axios.create({
+	baseURL: API_URL,
+	headers: {
+		'Content-Type': 'application/json'
+	}
+})
+
+// instance.interceptors.request.use(async config => {
+// 	//const accessToken = await getAccessToken()
+
+// 	//if (config.headers && accessToken)
+// 	//	config.headers.Authorization = `Bearer ${accessToken}`
+// 	return config
+// })
 
 export const request = async <T>(config: AxiosRequestConfig) => {
 	const onSuccess = (response: AxiosResponse<T>) => response.data
@@ -16,6 +30,48 @@ export const request = async <T>(config: AxiosRequestConfig) => {
 
 		return Promise.reject(error)
 	}
-
 	return instance(config).then(onSuccess).catch(onError)
 }
+
+instance.interceptors.response.use(
+	config => config,
+	async error => {
+		console.log(error);
+		const originalRequest = error.config
+
+		if (
+			(error.response.status === 401 ||
+				errorCatch(error) === 'jwt expired' ||
+				errorCatch(error) === 'jwt must be provided') &&
+			error.config &&
+			!error.config._isRetry
+		) {
+			originalRequest._isRetry = true
+			try {
+				//await getNewTokens()
+				return instance.request(originalRequest)
+			} catch (error) {
+				if (errorCatch(error) === 'jwt expired') {
+					//await deleteTokensStorage()
+				}
+					
+			}
+		}
+
+		throw error
+	}
+)
+
+
+
+const errorCatch = (error: any): string => {
+	const message = error?.response?.data?.message
+
+	return message
+		? typeof error.response.data.message === 'object'
+			? message[0]
+			: message
+		: error.message
+}
+
+export default instance

@@ -24,7 +24,7 @@ const cheese = require('../assets/images/milk/cheese.png');
 const milk = require('../assets/images/milk/milk.png');
 const soupCream = require('../assets/images/milk/soupCream.png');
 const spread = require('../assets/images/milk/spread.png');
-const cottageCheese = require('../assets/images/milk/cottageCheese.png');
+const cottageCheese = require('../assets/images/milk/cottageCheese.png'); // творог
 
 const subChicken = require('../assets/images/bird/chicken.png');
 const chick = require('../assets/images/bird/chick.png');

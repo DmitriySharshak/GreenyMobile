@@ -1,22 +1,20 @@
-import images from "../constants/images"
-import { ICategoryItem } from "../types/categoryItem.interface"
-import { getCategoryListUrl } from "./api/api.config"
 import { request } from "./api/api.request"
+import { CategoryModel } from "./api/models/CategoryModel"
 
-// export const CategoryService = {
-//     async getAll() {
-        
+export const CategoryService = {
+    async getList() {
+		return request<CategoryModel[]>({
+			url: '/category/list',
+			method: 'GET'
+		})
+	},
 
-// 		// return request<IItem[]>({
-// 		// 	url: getCategoryListUrl(),
-// 		// 	method: 'GET',
-// 		// 	params: searchTerm
-// 		// 		? {
-// 		// 				searchTerm
-// 		// 		  }
-// 		// 		: {}
-// 		// })
-// 	},
-// }
+	async getVersion() {
+		return request<string>({
+			url: '/info/version',
+			method: 'GET'
+		})
+	},
+}
 
 
