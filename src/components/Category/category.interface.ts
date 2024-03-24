@@ -15,11 +15,7 @@ export interface ICategory {
     name: string
 
     /**
-     * Иконка
+     * Изображение
      */
-    iconName: any
-}
-
-export interface ISubCategoryItem extends ICategory {
-    categoryId: number
+    image: any
 }

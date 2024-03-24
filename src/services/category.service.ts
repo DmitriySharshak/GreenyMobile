@@ -2,9 +2,16 @@ import { request } from "./api/api.request"
 import { CategoryModel } from "./api/models/CategoryModel"
 
 export const CategoryService = {
-    async getList() {
+    async getRoot() {
 		return request<CategoryModel[]>({
-			url: '/category/list',
+			url: '/categories',
+			method: 'GET'
+		})
+	},
+
+	async getChildren(id: number) {
+		return request<CategoryModel[]>({
+			url: `/categories/${id}/childrens`,
 			method: 'GET'
 		})
 	},

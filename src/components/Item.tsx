@@ -1,22 +1,20 @@
 import { FC } from "react";
-import { Image, View, Text, TouchableOpacity } from "react-native";
-import appTheme from "../constants/themas";
 import ImageComponent from "./ImageComponent";
 import TouchableComponent from "./TouchableComponent";
 
 interface IItemProps {
 	id: number
     name: string
-    iconName: any
-	selectedItem: boolean 
-    setSelectedItem: (id: number) => void
+    image: string
+	selected: boolean 
+    onSelected: (id: number) => void
 }
 
-const Item: FC<IItemProps>= ({id, name, iconName, selectedItem, setSelectedItem}) => {
+const Item: FC<IItemProps>= ({id, name, image, selected, onSelected}) => {
     
     return <>
-       <TouchableComponent onPress={()=>setSelectedItem(id)} selected={selectedItem}>
-        <ImageComponent iconName={iconName} selected={selectedItem} size={40}></ImageComponent>
+       <TouchableComponent onPress={()=>onSelected(id)} selected={selected}>
+        <ImageComponent image={image} selected={selected} size={40}></ImageComponent>
 
         {/* <Text style={{ color: (selectedItem) ? appTheme.COLORS.white : appTheme.COLORS.black, ...appTheme.FONTS.body4}}>
             {name}

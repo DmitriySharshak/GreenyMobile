@@ -10,8 +10,7 @@ type ACTION_TYPE =
   | { type: 'decrement', payload: number }
 
 const initialState = { count: 0 }
-
-    
+   
 /**
      * Компонент навигатора, для перехода на страницу продукта
      */
@@ -59,11 +58,15 @@ const Product: FC<IProduct> = props => {
             </View>
             <View style={{...styles.marginTop}}>
                 {!isCart ? (
-                    <Button title="В корзину" onPress={() => setCart(true) }/>
+                    <Button 
+                     color={appTheme.COLORS.primary}
+                     title="В корзину" onPress={() => setCart(true) }/>
                 ):
                 (
                     <View style={{...styles.viewCart}}>
-                        <Button title="-" onPress={() => {
+                        <Button 
+                        color={appTheme.COLORS.primary}
+                        title="-" onPress={() => {
                             
                             if(state.count== props.minCount) {
                                 return;
@@ -72,7 +75,9 @@ const Product: FC<IProduct> = props => {
                             dispatch({ type: 'decrement', payload: props.step})
                         }}/>
                         <Text style={{...styles.text}}>{state.count}</Text>
-                        <Button title="+" onPress={() => dispatch({ type: 'increment', payload: props.step })}/>
+                        <Button 
+                        color={appTheme.COLORS.primary}
+                        title="+" onPress={() => dispatch({ type: 'increment', payload: props.step })}/>
                     </View>
                 )}
             </View>

@@ -1,37 +1,43 @@
 import React, {FC, useState} from "react";
 import Item from "../Item";
-import { ICategoryItem} from "../../types/categoryItem.interface";
 import HorizontalList from "../HorizontalList";
+import { CategoryModel } from "../../services/api/models/CategoryModel";
 
 interface ICategoryProps {
     caption: string
-    items: ICategoryItem[]
-    onSelectedHandler: (id: number) => void
+    items: CategoryModel[] | undefined
+    onSelectedHandler: (selected: CategoryModel) => void
 }
 
 const CategoryList: FC<ICategoryProps> = ({caption, items, onSelectedHandler}) => {
-    const [selectedItem, setSelectedItem] = useState<ICategoryItem | null>(null);
+    const [selected, setSelected] = useState<CategoryModel | null>(null);
     const [index, setIndex] = useState<number>(0);
 
-    function onSelectItem(id: number) {
-        onSelectedHandler(id);
-
-        let item = items.find((item)=> item.id == id);
+    function onSelect(id: number) {
+        
+        let item = items?.find((item)=> item.id == id);
+        
         if(item) {
-            setSelectedItem(item);
-            let index = items.indexOf(item);
-            setIndex(index);
+            
+            onSelectedHandler(item);
+            setSelected(item);
+            
+            let index = items?.indexOf(item);
+
+            if(index) 
+                setIndex(index);
         }
     }
-    //97 - надо подбирать цифры
-    const getItemLayout = (data:ArrayLike<ICategoryItem>, index:number) => ({
-        length: 35,
-        offset: 35 * index,
-        index,
-      })
 
-    const renderItem = ({item}: {item: ICategoryItem}) => {
-        return <Item {...item} selectedItem={selectedItem?.id===item.id} setSelectedItem={onSelectItem}  />
+    //97 - надо подбирать цифры
+    // const getItemLayout = (data:any, index:number) => ({
+    //     length: 35,
+    //     offset: 35 * index,
+    //     index,
+    //   })
+
+    const renderItem = ({item}: {item: CategoryModel}) => {
+        return <Item {...item} selected={selected?.id === item.id} onSelected={onSelect}  />
     }
 
     return <HorizontalList 
@@ -39,26 +45,8 @@ const CategoryList: FC<ICategoryProps> = ({caption, items, onSelectedHandler}) =
             data={items} 
             // @ts-ignore
             renderItem={renderItem}
-            getItemLayout={getItemLayout}
+            //getItemCount={data=>data.length}
             initialScrollIndex={index} />
-    
-    // if(selectedItem) {
-        
-    // }
-    
-    // return (
-    //         <View>
-    //             <View>
-    //                 <Text style={{fontSize: themas.SIZES.h2}}>{caption}</Text>
-    //             </View>
-    //             <VerticalList
-    //                 snapToInterval={100}
-    //                 data={items}
-    //                 // @ts-ignore
-    //                 renderItem={renderItem}
-    //             />
-    //         </View>           
-    // )
 }
 
 export default CategoryList 

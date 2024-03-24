@@ -1,7 +1,8 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 import Toast from 'react-native-toast-message'
 
-const API_URL = 'https://greenyfarm/api/v1';
+//const API_URL = 'http://greenyfarm.ru/api/v1';
+const API_URL = 'http://10.0.2.2:5259/api/v1';
 
 const instance = axios.create({
 	baseURL: API_URL,
@@ -19,7 +20,10 @@ const instance = axios.create({
 // })
 
 export const request = async <T>(config: AxiosRequestConfig) => {
-	const onSuccess = (response: AxiosResponse<T>) => response.data
+	const onSuccess = (response: AxiosResponse<T>) => {
+		console.log(response.data);
+		return response.data;
+	}
 
 	const onError = (error: AxiosError<T>) => {
 		Toast.show({
@@ -38,7 +42,7 @@ instance.interceptors.response.use(
 	async error => {
 		console.log(error);
 		const originalRequest = error.config
-
+		console.log(error);
 		if (
 			(error.response.status === 401 ||
 				errorCatch(error) === 'jwt expired' ||

@@ -11,36 +11,41 @@ import { Text } from "react-native"
 import Product from "../components/Product/Product"
 import { productItems } from "../components/Product/product.data"
 import { IProduct } from "../components/Product/product.interface"
-import { categoryLevel0, categoryLevel1 } from "../components/Category/category.data"
+
 import { ICategory } from "../components/Category/category.interface"
+import { CategoryService } from "../services/category.service"
+import { CategoryModel } from "../services/api/models/CategoryModel"
 
 
 const HomeScreen = () => {
-    const subCategoriesCache = categoryLevel1.map(q=>q);  
     const { navigate } = useTypedNavigation();
-    const [categories, setCategories] = useState<ICategory[]>(categoryLevel0);
-    const [subCategories, setSubCategories] = useState(categoryLevel1);
+    const [categories, setCategories] = useState<CategoryModel[] | undefined>(undefined);
+    const [childrens, setChildrens] = useState<CategoryModel[] | undefined>(undefined);
     const [productList, setProductList] = useState<IProduct[] | null>(null);
-    const [categorySelected, setCategorySelected] = useState<ICategory|undefined>(undefined);
-    const [subCategorySelected, setSubCategorySelected] = useState<ICategory|undefined>(undefined);
+    const [categorySelected, setCategorySelected] = useState<CategoryModel | undefined>(undefined);
+    const [childrenSelected, setChildrenSelected] = useState<CategoryModel | undefined>(undefined);
 
-    function onSelectedCategory(id: number) {
-        const model = categories.find(q=>q.id==id)
-        let items = subCategoriesCache.filter((item)=> item.parentId == id);
-        setSubCategories(items);
-
-        setCategorySelected(model);
+    function onSelectedCategory(selected: CategoryModel) {
         
-        // показать все карточки продуктов 
-        setSubCategorySelected(items[0]);
+        setCategorySelected(selected);
+
+        CategoryService.getChildren(selected.id).then((data) => {
+                
+            setChildrens(data);
+
+            data.forEach(element => {
+                console.log(element); 
+            });
+            
+            if(data && data.length > 0) {
+                onSelectedChildren(data[0]);
+            }
+        })
     }
 
-    function onSelectedSubCategory(id: number) {
-        const item = subCategories.find((item)=> item.id == id)   
-        if(item) {
-            setSubCategorySelected(item);
-            setProductList(productItems)
-        } 
+    function onSelectedChildren(selected: CategoryModel) {
+        setChildrenSelected(selected);
+        //setProductList(selected)
     }
 
     function GetPath() {
@@ -52,23 +57,33 @@ const HomeScreen = () => {
 
         path += categorySelected.name;
 
-        if(subCategorySelected) {
-            path += " / " + subCategorySelected.name;
+        if(childrenSelected) {
+            path += " / " + childrenSelected.name;
         }
 
         return path;
     }
 
-    // useEffect(() => {
-    //     // CategoryService.getVersion().then((version)=>{
-    //     //     console.log(version);    
-    //     // });
-    //     // CategoryService.getList().then((data) => {
-    //     //     data.map(i=>{
-    //     //         console.log(i.name);    
-    //     //     })
-    //     // })
-    //   }, []);
+    useEffect(() => {
+
+        CategoryService.getVersion().then((version)=>{
+            console.log(version);    
+        });
+
+        CategoryService.getRoot().then((data) => {
+                
+            setCategories(data);
+
+            data.forEach(element => {
+                console.log(element); 
+            });
+            
+            if(data && data.length > 0) {
+                onSelectedCategory(data[0]);
+            }
+        })
+
+        }, []);
 
     return (<>
             <View style={{ 
@@ -78,7 +93,7 @@ const HomeScreen = () => {
              {Header()}
 
              <CategoryList key={1} caption="Категории" items={categories} onSelectedHandler={onSelectedCategory}></CategoryList>
-             <CategoryList key={2} caption="Подкатегории" items={subCategories} onSelectedHandler={onSelectedSubCategory}></CategoryList> 
+             <CategoryList key={2} caption="Подкатегории" items={childrens} onSelectedHandler={onSelectedChildren}></CategoryList> 
              <Text style={{fontWeight:"bold", fontSize:12}}>{GetPath()}</Text>
              <View style={{
                 flexDirection: "row",

@@ -5,11 +5,11 @@ import appTheme from "../constants/themas";
 
 export interface IImageComponent {
     selected: boolean
-    iconName: any,
+    image: any,
     size: number, 
 }
 
-const ImageComponent:FC<IImageComponent>=({selected, iconName, size})=> {
+const ImageComponent:FC<IImageComponent>=({selected, image, size})=> {
 
     return <View
             style={{
@@ -21,7 +21,7 @@ const ImageComponent:FC<IImageComponent>=({selected, iconName, size})=> {
             borderRadius: size/2
             }}>
             <Image 
-                source={iconName}
+                source={{uri:'data:image/png;base64,'+image}}
                 resizeMode="contain"
                 style={{
                     width: size / 2,

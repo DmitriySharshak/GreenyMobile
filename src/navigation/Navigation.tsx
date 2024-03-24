@@ -7,6 +7,7 @@ import BottomMenu from "../components/bottom-menu/BottomMenu";
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import { Alert } from "react-native";
+import ShoppingBacket from "../components/ShoppingBacket/ShoppingBacket";
 
 
 const Stack = createNativeStackNavigator<TypeRootStackParamList>()
@@ -40,7 +41,8 @@ const Navigation: FC = () => {
 
             </Stack.Navigator>
         </NavigationContainer>
-        <BottomMenu navigate={navRef.navigate} currentRoute={currentRoute} ></BottomMenu>
+        <BottomMenu navigate={navRef.navigate} currentRoute={currentRoute}></BottomMenu>
+        <ShoppingBacket min={0} max={0}></ShoppingBacket>
         </>
         
     )
