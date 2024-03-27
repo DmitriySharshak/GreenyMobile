@@ -1,8 +1,8 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 import Toast from 'react-native-toast-message'
 
-//const API_URL = 'http://greenyfarm.ru/api/v1';
-const API_URL = 'http://10.0.2.2:5259/api/v1';
+const API_URL = 'http://greenyfarm.ru/api/v1';
+//const API_URL = 'http://10.0.2.2:5259/api/v1';
 
 const instance = axios.create({
 	baseURL: API_URL,

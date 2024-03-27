@@ -6,7 +6,7 @@
       android:networkSecurityConfig="@xml/network_security_config"
       android:name=".MainApplication"
       android:label="@string/app_name"
-      android:icon="@mipmap/ic_launche"
+      android:icon="@mipmap/ic_launcher"
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/AppTheme">

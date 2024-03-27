@@ -11,7 +11,7 @@ export const CategoryService = {
 
 	async getChildren(id: number) {
 		return request<CategoryModel[]>({
-			url: `/categories/${id}/childrens`,
+			url: `/categories/${id}/descendants`,
 			method: 'GET'
 		})
 	},
