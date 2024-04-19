@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { Text, View } from "react-native"
 
-const CartScreen:  FC = () => {
+const Cart:  FC = () => {
     return (
          <View>
             <Text>Корзина с покупками</Text>
@@ -9,4 +9,4 @@ const CartScreen:  FC = () => {
     )
 }
 
-export default CartScreen;
+export default Cart;

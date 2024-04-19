@@ -4,42 +4,47 @@ export type TypeRootStackParamList = {
     /**
      * Страница аутентификации
      */
-    AuthScreen: undefined,
+    Login: undefined,
+
+    /**
+     * Страница Регистрации
+     */
+    Register: undefined,
     
     /**
      * Домашнаяя страница
      */
-    HomeScreen: undefined,
+    Home: undefined,
 
     /**
      * Корзина 
      */
-    CartScreen: undefined,
+    Cart: undefined,
 
     /**
      * Профиль пользователя
      */
-    ProfileScreen: undefined,
+    Profile: undefined,
 
     /**
      * Настройки 
      */
-    SettingsScreen: undefined,
+    Settings: undefined,
 
     /**
      * Страница совместных закупок
      */
-    TeamWorkScreen: undefined, 
+    TeamWork: undefined, 
 
     /**
      * Страница контрактного фермерства
      */
-    SoilScreen: undefined,
+    Soil: undefined,
 
     /**
      * Страница продукта
      */
-    ProductScreen: undefined   
+    Product: undefined   
 } & TypeRootStackAdminList
 
 type TypeRootStackAdminList = {

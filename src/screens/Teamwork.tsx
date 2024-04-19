@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { Text, View } from "react-native"
 
-const TeamWorkScreen:  FC = () => {
+const TeamWork:  FC = () => {
     return (
          <View>
             <Text>Страница совместной закупки</Text>
@@ -9,4 +9,4 @@ const TeamWorkScreen:  FC = () => {
     )
 }
 
-export default TeamWorkScreen;
+export default TeamWork;

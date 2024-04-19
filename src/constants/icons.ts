@@ -5,5 +5,15 @@ const soil = require('../assets/icons/soil.png');
 const teamwork = require('../assets/icons/teamwork.png');
 const menu = require('../assets/icons/menu.png');
 
+const cartGrey = require('../assets/icons/footer/cart-grey.png');
+const cartGreen = require('../assets/icons/footer/cart-green.png');
+const networkGrey = require('../assets/icons/footer/network-grey.png');
+const networkGreen = require('../assets/icons/footer/network-green.png');
+const profileGrey = require('../assets/icons/footer/profile-grey.png');
+const profileGreen = require('../assets/icons/footer/profile-green.png');
+const gardenGrey = require('../assets/icons/footer/garden-grey.png');
+const gardenGreen = require('../assets/icons/footer/garden-green.png');
 
-export default {shopingCart, profile, house, soil, teamwork, menu};
+
+export default {shopingCart, profile, house, soil, teamwork, menu,
+                cartGrey, cartGreen, networkGrey, networkGreen, profileGrey, profileGreen, gardenGrey, gardenGreen};

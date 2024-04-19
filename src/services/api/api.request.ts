@@ -1,14 +1,15 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 import Toast from 'react-native-toast-message'
 
-const API_URL = 'http://greenyfarm.ru/api/v1';
-//const API_URL = 'http://10.0.2.2:5259/api/v1';
+//const API_URL = 'http://greenyfarm.ru/api/v1';
+const API_URL = 'http://10.0.2.2:5259/api/v1';
+
 
 const instance = axios.create({
 	baseURL: API_URL,
 	headers: {
 		'Content-Type': 'application/json'
-	}
+	},
 })
 
 // instance.interceptors.request.use(async config => {
@@ -18,6 +19,16 @@ const instance = axios.create({
 // 	//	config.headers.Authorization = `Bearer ${accessToken}`
 // 	return config
 // })
+
+export const post = async<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> =>{
+	return new Promise((result, error) => {
+		instance.post<T>(API_URL+"/"+ url, data, config).then(response => {
+		  result(response.data);
+		}, err => {
+		  error(err);
+		});
+	  });
+}
 
 export const request = async <T>(config: AxiosRequestConfig) => {
 	const onSuccess = (response: AxiosResponse<T>) => {

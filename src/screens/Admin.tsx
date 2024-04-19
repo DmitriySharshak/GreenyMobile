@@ -1,12 +1,12 @@
 import { FC } from "react"
 import { Text, View } from "react-native"
 
-const Auth:  FC = () => {
+const Admin:  FC = () => {
     return (
          <View>
-            <Text>Аутентификация</Text>
+            <Text>Admin</Text>
          </View>
     )
 }
 
-export default Auth;
+export default Admin;

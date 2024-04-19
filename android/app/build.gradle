@@ -98,6 +98,35 @@ android {
             }
         }
     }
+
+    //productFlavors {
+    //    prod {
+    //        applicationId "ru.greeny"
+    //        versionCode 1
+    //        versionName "0.0.1"
+    //    }
+    //    dev {
+    //        applicationId "ru.greeny.dev"
+    //        versionCode 1
+    //        versionName "0.0.1"
+    //    }
+    //}
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def project = "greeny"
+            //def flavor = variant.productFlavors[0].name
+            //def buildType = variant.variantData.variantConfiguration.buildType.name
+            //def version = variant.versionName
+            def date = new Date();
+            def formattedDate = date.format('dd.MM.yyyy')
+
+            def newApkName = "greeny_${VERSION}_${formattedDate}.apk"
+
+            outputFileName = new File(newApkName)
+        }
+    }
+
     buildTypes {
         debug {
             signingConfig signingConfigs.debug

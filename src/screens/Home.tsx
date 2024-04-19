@@ -1,23 +1,18 @@
 
 import React, { useEffect, useState } from "react"
-import {Alert, View } from "react-native"
+import {View } from "react-native"
 import appTheme from "../constants/themas"
-import Header from "../components/Header"
 import CategoryList from "../components/Category/CategoryList"
-import { Button } from "react-native"
 import { useTypedNavigation } from "../hooks/useTypedNavigation"
-import images from "../constants/images"
 import { Text } from "react-native"
 import Product from "../components/Product/Product"
-import { productItems } from "../components/Product/product.data"
 import { IProduct } from "../components/Product/product.interface"
 
-import { ICategory } from "../components/Category/category.interface"
 import { CategoryService } from "../services/category.service"
 import { CategoryModel } from "../services/api/models/CategoryModel"
 
 
-const HomeScreen = () => {
+const Home = () => {
     const { navigate } = useTypedNavigation();
     const [categories, setCategories] = useState<CategoryModel[] | undefined>(undefined);
     const [childrens, setChildrens] = useState<CategoryModel[] | undefined>(undefined);
@@ -90,7 +85,7 @@ const HomeScreen = () => {
                 paddingLeft: appTheme.SIZES.padding, 
                 paddingRight: appTheme.SIZES.padding  
             }}>
-             {Header()}
+             {/* {Header()} */}
 
              <CategoryList key={1} caption="Категории" items={categories} onSelectedHandler={onSelectedCategory}></CategoryList>
              <CategoryList key={2} caption="Подкатегории" items={childrens} onSelectedHandler={onSelectedChildren}></CategoryList> 
@@ -110,4 +105,4 @@ const HomeScreen = () => {
 }
 
 
-export default HomeScreen;
+export default Home;

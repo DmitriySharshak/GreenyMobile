@@ -1,10 +1,10 @@
-import AdminScreen from "../screens/AdminScreen";
+import Admin from "../screens/Admin";
 import { IRoute } from "./navigation.types";
 
 export const adminRoutes: IRoute[] = [
     {
         name: 'Admin',
-        component:AdminScreen,
+        component:Admin,
         isAdmin: true
     }
 ]

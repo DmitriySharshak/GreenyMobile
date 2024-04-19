@@ -3,7 +3,7 @@ import { Text, View } from "react-native"
 import { useTypedNavigation } from "../hooks/useTypedNavigation"
 import { Button } from "react-native"
 
-const ProductScreen:  FC = () => {
+const Product:  FC = () => {
     const { navigate } = useTypedNavigation()
     return (
          <View>
@@ -16,4 +16,4 @@ const ProductScreen:  FC = () => {
     )
 }
 
-export default ProductScreen;
+export default Product;

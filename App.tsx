@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
 import Navigation from './src/navigation/Navigation';
+import AuthProvider from './src/providers/AuthProvider';
 
 function App(): JSX.Element {
   return (  
-    <SafeAreaProvider>
-      <Navigation/>
-      
-      {/* <SafeAreaView>
-        <Text>caption</Text>
-      </SafeAreaView> */}
-        
-    </SafeAreaProvider>
-  
+    <AuthProvider>
+      <SafeAreaProvider>
+        <Navigation/>
+      </SafeAreaProvider>
+    </AuthProvider>
   )
 }
 

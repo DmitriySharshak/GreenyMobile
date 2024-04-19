@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { Text, View } from "react-native"
 
-const SoilScreen:  FC = () => {
+const Soil:  FC = () => {
     return (
          <View>
             <Text>Страница вырастить на заказ</Text>
@@ -9,4 +9,4 @@ const SoilScreen:  FC = () => {
     )
 }
 
-export default SoilScreen;
+export default Soil;
