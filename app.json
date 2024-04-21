@@ -2,6 +2,7 @@
   "name": "greeny",
   "displayName": "greeny",
   "version": "0.1.0",
+  "versionData": "24.04.21",
   "icon":"./src/assets/images/meat.png",
   "splash":{
     "image":"./src/assets/images/honey.png",

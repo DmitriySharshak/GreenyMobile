@@ -9,7 +9,7 @@ import Loader from "../components/ui/Loader"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { IAuthFormData, IUser } from "../types/user.interface"
 import Field from "../components/ui/form-elements/File"
-import  app  from '../../app.json';
+import Version from "../components/Version"
 
 const Auth:  FC = () => {
 	const { setUser } = useAuth()
@@ -106,9 +106,7 @@ const Auth:  FC = () => {
 					</Button>
 				</View>
 
-				<View style={{marginBottom:30}}>
-					<Text style={{color:appTheme.COLORS.darkgray, fontSize:10}}>Версия {app.version}</Text>
-				</View> 
+				<Version></Version>
 		</View>
 	)
 }

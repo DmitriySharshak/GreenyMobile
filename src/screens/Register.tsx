@@ -1,5 +1,5 @@
 import { FC, useState } from "react"
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import appTheme from "../constants/themas";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Loader from "../components/ui/Loader";
@@ -8,7 +8,7 @@ import { IUserRegister } from "../types/user.interface";
 import { AuthService } from "../services/auth.service";
 import Button from "../components/ui/button/Button";
 import { useTypedNavigation } from "../hooks/useTypedNavigation";
-import  app  from '../../app.json';
+import Version from "../components/Version";
 
 
 const Register:  FC = () => {
@@ -120,9 +120,7 @@ const Register:  FC = () => {
       
     </View>
 
-	<View style={{marginBottom:30}}>
-		<Text style={{color:appTheme.COLORS.darkgray, fontSize:10}}>Версия {app.version}</Text>
-	</View> 
+	<Version></Version> 
     
 </View>
     ) 
