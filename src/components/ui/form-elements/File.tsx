@@ -41,14 +41,14 @@ const Field = <T extends Record<string, any>>({control,	rules, name, ...rest}: I
 
 const styles = StyleSheet.create({
 	error:{
-		borderColor:'redd',
+		borderColor:'red',
 		borderStyle: 'solid',
 		borderTopWidth: 0.5,
 		borderBottomWidth:0.5,
 		borderLeftWidth:0.5,
 		borderRightWidth:0.5,
 		width: "100%",
-		height: 40,
+		height: 30,
 		marginBottom: appTheme.SIZES.margin,
 	},
 	normal: {
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
 		width: "100%",
 		height: 40,
 		marginBottom: appTheme.SIZES.margin,
+		
 
 	}
   });

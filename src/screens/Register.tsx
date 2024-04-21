@@ -8,6 +8,7 @@ import { IUserRegister } from "../types/user.interface";
 import { AuthService } from "../services/auth.service";
 import Button from "../components/ui/button/Button";
 import { useTypedNavigation } from "../hooks/useTypedNavigation";
+import  app  from '../../app.json';
 
 
 const Register:  FC = () => {
@@ -29,8 +30,11 @@ const Register:  FC = () => {
 
     return (
     <View style={styles.container}>
+		<View style={{marginTop:30}}>
+			<Text style={{color:appTheme.COLORS.primary, fontSize:10}}>GREENY</Text>
+		</View> 
+
       <View style={styles.containerInner}>
-        <Text>Регистрация</Text>
         {isLoading ? <Loader></Loader> : ""}
       
 	    <Field<IUserRegister>
@@ -91,13 +95,13 @@ const Register:  FC = () => {
 			secureTextEntry
 		/>
 		
-      <View>
-						<TouchableOpacity onPress={() => navigation.navigate('Login')}>
-					 		<Text>
-								Авторизация
-					 		</Text>
-						</TouchableOpacity>
-					</View>
+      <View style={{justifyContent:"flex-end"}}>
+		    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+				<Text>
+					Вернуться на форму авторизации
+				</Text>
+			</TouchableOpacity>
+		</View>
       <Button onPress={handleSubmit(onSubmit)} style={{
 						backgroundColor: appTheme.COLORS.primary,
 						width: "100%",
@@ -115,6 +119,10 @@ const Register:  FC = () => {
 					</Button>
       
     </View>
+
+	<View style={{marginBottom:30}}>
+		<Text style={{color:appTheme.COLORS.darkgray, fontSize:10}}>Версия {app.version}</Text>
+	</View> 
     
 </View>
     ) 

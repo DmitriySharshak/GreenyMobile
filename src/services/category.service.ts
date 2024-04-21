@@ -1,27 +1,36 @@
 import { request } from "./api/api.request"
-import { CategoryModel } from "./api/models/CategoryModel"
+import { CategoryHash } from "../Models/Category/CategoryHash";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const CategoryService = {
-    async getRoot() {
-		return request<CategoryModel[]>({
-			url: '/categories',
-			method: 'GET'
-		})
-	},
 
-	async getChildren(id: number) {
-		return request<CategoryModel[]>({
-			url: `/categories/${id}/descendants`,
-			method: 'GET'
-		})
-	},
+	async getList() {
+		var hash = 0;
 
-	async getVersion() {
-		return request<string>({
-			url: '/info/version',
-			method: 'GET'
+		return request<CategoryHash>({
+			url: '/categories/'+hash,
+			method: 'GET',
+			params: {hash}
 		})
 	},
+}
+
+const key = "category";
+
+const setItem = async (data: CategoryHash) => {
+	try {
+		await AsyncStorage.setItem(key, JSON.stringify(data))
+	} catch (e) {}
+}
+
+const getItem = async () => {
+	try {
+		var jsonValue = await AsyncStorage.getItem(key)
+		return JSON.parse(jsonValue || 'null'
+		)
+	} catch (e) {
+		return null
+	}
 }
 
 

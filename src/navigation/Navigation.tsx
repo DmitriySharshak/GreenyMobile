@@ -3,7 +3,7 @@ import { useNavigationContainerRef, NavigationContainer } from "@react-navigatio
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TypeRootStackParamList } from "./navigation.types";
 import { userRoutes } from "./user.routes";
-import BottomMenu from "../components/bottom-menu/BottomMenu";
+import BottomMenu from "../components/BottomMenu/BottomMenu";
 import { useAuth } from "../hooks/useAuth";
 import { adminRoutes } from "./admin.routes";
 import Auth from "../screens/Login";
@@ -24,28 +24,23 @@ const Navigation: FC = () => {
     const routes = [...userRoutes, ...adminRoutes]
 
     useEffect(() => {
-        console.log("Navigation useEffect")
         setCurrentRoute(navRef.getCurrentRoute()?.name)
 
         const listen = navRef.addListener('state', ()   => {
-            console.log("Navigation useEffect 2")
             setCurrentRoute(navRef.getCurrentRoute()?.name)
         })
 
         return () => {
-            console.log("Navigation useEffect 3")
             navRef.removeListener('state', listen);
         }
     }, [])
 
     useCheckAuth(currentRoute)
-    console.log("user:" + user);
-    console.log("currentRoute:" + currentRoute);
     
     return (
         <>
         <NavigationContainer ref={navRef}>
-            <Stack.Navigator screenOptions={{headerShown: false }} initialRouteName={user ? "Profile": "Login"}>
+            <Stack.Navigator screenOptions={{headerShown: false }} initialRouteName={user ? "TeamWork": "Login"}>
 
             {user ? (
 				user.isAdmin ? (

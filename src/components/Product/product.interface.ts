@@ -1,4 +1,4 @@
-import { TypeNavigate } from "../bottom-menu/menu.interface"
+import { TypeNavigate } from "../BottomMenu/menu.interface"
 
 export interface IProduct {
     

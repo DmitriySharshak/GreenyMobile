@@ -25,23 +25,15 @@ const styles = StyleSheet.create({
 })
 
 const Header = () => {
-    var value: string = "11";
-
     function onChangeFilter(text: string) {
         
     }
 
     return <View style={styles.header}>
-             <TouchableHighlight onPress={() => Alert.alert("Сайт")}>
+             <TouchableHighlight>
                 <Image source={icons.menu} style={{width:30, height:30}}/>
              </TouchableHighlight>
             <View style={styles.header_left}>
-              <TextInput
-                style={styles.input}
-                onChangeText={onChangeFilter}
-                //value={value}
-                placeholder="хочу найти..."
-              />
             </View>
            </View>
 }

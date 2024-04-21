@@ -32,7 +32,6 @@ export const post = async<T>(url: string, data?: any, config?: AxiosRequestConfi
 
 export const request = async <T>(config: AxiosRequestConfig) => {
 	const onSuccess = (response: AxiosResponse<T>) => {
-		console.log(response.data);
 		return response.data;
 	}
 

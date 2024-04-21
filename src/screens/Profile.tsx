@@ -4,27 +4,24 @@ import { useTypedNavigation } from "../hooks/useTypedNavigation"
 import { Button } from "react-native"
 import { useAuth } from "../hooks/useAuth"
 import { deleteUser } from "../store/auth.store"
+import Header from "../components/Header"
 
 const Profile:  FC = () => {
     const { setUser } = useAuth()
     const { navigate } = useTypedNavigation()
-    return (
+    return (<>
+            {Header()}
          <View>
-            <Text>Профиль</Text>
             <StatusBar></StatusBar>
-
-            <Button
-                title="Go to home"
-                onPress={() =>
-                    navigate('Home')}/>
-                <Button
-                title="Logout"
-                onPress={() =>
-                    {
+           
+            <Button title="Logout" onPress={() =>
+                {
                     setUser(null)
                     deleteUser();
-                    }}/>
+                }}/>
          </View>
+        </>
+            
     )
 }
 

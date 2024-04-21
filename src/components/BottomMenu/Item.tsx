@@ -12,7 +12,7 @@ interface IMenuItemProps {
 	currentRoute: string | undefined
 }
 
-const MenuItem: FC<IMenuItemProps> = ({ currentRoute, item, navigate }) => {
+const Item: FC<IMenuItemProps> = ({ currentRoute, item, navigate }) => {
 	const isActive = currentRoute === item.path
 	
 	return (
@@ -26,15 +26,12 @@ const MenuItem: FC<IMenuItemProps> = ({ currentRoute, item, navigate }) => {
 				source={isActive ? item.iconNameActive : item.iconName}
                 resizeMode="contain"
                 style={{
-                    width: 35,
-                    height: 35
+                    width: 25,
+                    height: 25
                 }} >
 					
 				</Image>
-				<Text style={{
-					color: isActive ? themas.COLORS.primary: themas.COLORS.secondary	
-
-				}}>
+				<Text style={{color: isActive ? themas.COLORS.primary: themas.COLORS.secondary, fontSize:10}}>
             		{item.name}
         		</Text>
 			</View>
@@ -42,4 +39,4 @@ const MenuItem: FC<IMenuItemProps> = ({ currentRoute, item, navigate }) => {
 	)
 }
 
-export default MenuItem
+export default Item

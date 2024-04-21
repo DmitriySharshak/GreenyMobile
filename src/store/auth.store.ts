@@ -1,7 +1,6 @@
 
 import AsyncStorage from "@react-native-async-storage/async-storage"
-import { TypeUserState } from "../providers/AuthProvider"
-import { IAuthResponse } from "../types/user.interface"
+import {  IUser } from "../types/user.interface"
 
 export const getUser = async () => {
 	try {
@@ -13,7 +12,7 @@ export const getUser = async () => {
 	}
 }
 
-export const saveUser = async (user: IAuthResponse) => {
+export const saveUser = async (user: IUser) => {
 	try {
 		await AsyncStorage.setItem("user", JSON.stringify(user))
 	} catch (e) {}

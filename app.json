@@ -1,11 +1,11 @@
 {
   "name": "greeny",
   "displayName": "greeny",
+  "version": "0.1.0",
   "icon":"./src/assets/images/meat.png",
   "splash":{
     "image":"./src/assets/images/honey.png",
     "resizeMode":"contain",
     "backgroundColor":"#ffffff"
   }
-  
 }

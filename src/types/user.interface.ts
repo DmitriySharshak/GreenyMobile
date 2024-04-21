@@ -17,10 +17,6 @@ export interface IUserRegister {
     address: string,
 }
 
-export interface IAuthResponse {
-	user: IUser
-}
-
 export interface IAuthFormData {
     login: string,
     password: string

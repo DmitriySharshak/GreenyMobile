@@ -9,10 +9,12 @@ import Loader from "../components/ui/Loader"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { IAuthFormData, IUser } from "../types/user.interface"
 import Field from "../components/ui/form-elements/File"
+import  app  from '../../app.json';
 
 const Auth:  FC = () => {
 	const { setUser } = useAuth()
 
+	const [isError, setIsError] = useState(false);
 	const [isLoading, setLoading] = useState(false);
 
 	const navigation = useTypedNavigation();
@@ -26,10 +28,21 @@ const Auth:  FC = () => {
 
 	const onSubmit: SubmitHandler<IAuthFormData> = data => {
 		setLoading(true)
+		setIsError(false)
 
-		AuthService.login(data.login, data.password).then((q) => {
+		AuthService.login(data.login, data.password).then((data) => {
 			setLoading(false)
-			setUser(q.user)
+			
+			if(data) {
+				setUser(data)
+				navigation.navigate("TeamWork")
+			}else {
+				setIsError(true)		
+			}
+		   
+		}).catch(q=> {
+			setLoading(false)
+			setIsError(true)
 		})
 	}
 
@@ -39,37 +52,33 @@ const Auth:  FC = () => {
 
     return (
 		<View style={styles.container}>
+
+                <View style={{marginTop:30}}>
+				  <Text style={{color:appTheme.COLORS.primary, fontSize:10}}>GREENY</Text>
+				</View> 
+
 				<View style={styles.containerInner}>
-					<Text>Авторизация</Text>
 					{isLoading ? <Loader></Loader> : ""}
 					
 					<Field<IAuthFormData>
 						placeholder='Введите номер телефона'
 						control={control}
 						name='login'
-						// rules={{
-						// 	required: 'Укажите почту',
-						// 	pattern: {
-						// 		value: validEmail,
-						// 		message: 'Пожалуйста, укажите правильную почту'
-						// 	}
-						// }}
 					/>
 					<Field<IAuthFormData>
 						placeholder='Введите пароль'
 						control={control}
 						name='password'
 						secureTextEntry
-						// rules={{
-						// 	 		required: 'Укажите пароль',
-						// 				minLength: {
-						// 					value: 6,
-						// 					message: 'Пароль должен содержать не меньге 6 символов'
-						// 				}
-						// 		}}
 					/>
+					{isError ? 
+						<View>
+							<Text style={{color:'red', fontSize:10}}>Неверно указан номер телефона или пароль</Text>
+						</View> 
+						: 
+						""
+						}
 
-					
 					<View style={styles.register}>
 						<TouchableOpacity onPress={() => onRegister()}>
 					 		<Text>
@@ -77,7 +86,7 @@ const Auth:  FC = () => {
 					 		</Text>
 						</TouchableOpacity>
 						<TouchableOpacity>
-        					<Text>Забыли пароль?</Text>	
+        					<Text>Не могу войти</Text>	
       					</TouchableOpacity>
 					</View>
 					<Button onPress={handleSubmit(onSubmit)} style={{
@@ -95,9 +104,11 @@ const Auth:  FC = () => {
 							Вход
 						</Text>
 					</Button>
-					
 				</View>
-				
+
+				<View style={{marginBottom:30}}>
+					<Text style={{color:appTheme.COLORS.darkgray, fontSize:10}}>Версия {app.version}</Text>
+				</View> 
 		</View>
 	)
 }
