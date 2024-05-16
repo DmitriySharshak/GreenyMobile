@@ -1,15 +1,16 @@
 import { FC, useState } from "react"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import { useAuth } from "../hooks/useAuth"
-import { useTypedNavigation } from "../hooks/useTypedNavigation"
-import appTheme from "../constants/themas"
-import Button from "../components/ui/button/Button"
-import { AuthService } from "../services/auth.service"
-import Loader from "../components/ui/Loader"
+import { useAuth } from "../../hooks/useAuth"
+import { useTypedNavigation } from "../../hooks/useTypedNavigation"
+
+import Button from "../../components/ui/button/Button"
+import { AuthService } from "../../services/auth.service"
+import Loader from "../../components/Loader"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { IAuthFormData, IUser } from "../types/user.interface"
-import Field from "../components/ui/form-elements/File"
-import Version from "../components/Version"
+import { IAuthFormData, IUser } from "../../types/user.interface"
+import Field from "../../components/ui/form-elements/File"
+import Version from "../../components/Version"
+import appTheme from "../../constants/themas"
 
 const Auth:  FC = () => {
 	const { setUser } = useAuth()

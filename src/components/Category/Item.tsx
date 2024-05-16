@@ -1,6 +1,6 @@
 import { FC } from "react";
 import ImageComponent from "../ImageComponent";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import appTheme from "../../constants/themas";
 
 interface IItemProps {
@@ -13,25 +13,34 @@ interface IItemProps {
 
 const Item: FC<IItemProps>= ({id, name, imageBase64, selected, onSelected}) => {
     
-    return <TouchableOpacity
-            style={{
-            padding: 4,
-            backgroundColor: (selected) ? appTheme.COLORS.primary : appTheme.COLORS.white,
-            borderRadius: appTheme.SIZES.radius,
-            alignItems: "center",
-            justifyContent: "center",
-            marginRight: appTheme.SIZES.padding,
-            marginTop: appTheme.SIZES.padding,
-            }}
-            onPress={() => onSelected(id)}
-            >
-            <ImageComponent image={imageBase64} selected={selected} size={50}></ImageComponent>
-            <Text style={{color: appTheme.COLORS.darkgray, fontSize: appTheme.SIZES.base}}>{name}</Text>          
+    return <TouchableOpacity style={[styles.container, selected && styles.container_selected]} onPress={() => onSelected(id)}>
+            <Image 
+                source={{uri:'data:image/png;base64,'+imageBase64}}
+                resizeMode="contain"
+                style={{
+                    width: 40,
+                    height: 40 }} />
 
-            {/* <View style={{borderTopColor: appTheme.COLORS.lightGray4, borderTopWidth:1, marginTop:4, width:"100%"}}>
-                <Text style={{color: appTheme.COLORS.darkgray, fontSize: appTheme.SIZES.base}}>{name}</Text>          
-            </View>      */}
+            <Text style={styles.container__text}>{name}</Text>          
         </TouchableOpacity>
 }
+
+const styles = StyleSheet.create({
+    container:{
+        padding: 4,
+        backgroundColor: "#E2EBE1",
+        borderWidth: 1,
+        borderRadius: appTheme.SIZES.radius,
+        alignItems: "center",
+    },
+    container_selected:{
+        backgroundColor: "#4CFA45",
+    },
+    container__text:{
+        color: appTheme.COLORS.black,
+        fontSize: appTheme.SIZES.base
+    }
+
+  })
 
 export default Item;

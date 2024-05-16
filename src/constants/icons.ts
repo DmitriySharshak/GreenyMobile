@@ -14,6 +14,12 @@ const profileGreen = require('../assets/icons/footer/profile-green.png');
 const gardenGrey = require('../assets/icons/footer/garden-grey.png');
 const gardenGreen = require('../assets/icons/footer/garden-green.png');
 
+const phone = require('../assets/icons/phone.png');
+const google = require('../assets/icons/google.png');
+const telegram = require('../assets/icons/telegram.png');
+const facebook = require('../assets/icons/facebook.png');
+
 
 export default {shopingCart, profile, house, soil, teamwork, menu,
-                cartGrey, cartGreen, networkGrey, networkGreen, profileGrey, profileGreen, gardenGrey, gardenGreen};
+                cartGrey, cartGreen, networkGrey, networkGreen, profileGrey, profileGreen, gardenGrey, gardenGreen,
+                phone, google, telegram, facebook};

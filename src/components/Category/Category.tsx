@@ -58,7 +58,6 @@ const Category = () => {
 
              <List key={1} caption="Категории" items={categories} onSelectedHandler={onSelectedCategory} selected={categorySelected}></List>
              <List key={2} caption="Подкатегории" items={childrens} onSelectedHandler={onSelectedChildren} selected={childrenSelected}></List>
-             {/* <Text style={{fontWeight:"bold", fontSize:12}}>{GetPath()}</Text> */}
              {/* <View style={{
                 flexDirection: "row",
                 flexWrap: "wrap",

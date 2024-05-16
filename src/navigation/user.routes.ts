@@ -8,13 +8,23 @@ import Soil from "../screens/Soil";
 import { IRoute } from "./navigation.types";
 import Product from "../screens/Product";
 import Register from "../screens/Register";
-import Login from "../screens/Login";
+import Login from "../screens/Auth/Login";
+import Welcome from "../screens/Auth/Welcome";
+import Onboarding from "../screens/Onboarding/Onboarding";
 
 export const userRoutes: IRoute[] = [
       {
         name: "Login",
         component: Login
       },
+      {
+        name: "Welcome",
+        component: Welcome
+      }, 
+      {
+        name: "Onboarding",
+        component: Onboarding
+      }, 
       {
         name: "Register",
         component: Register,

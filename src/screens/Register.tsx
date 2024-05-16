@@ -2,7 +2,7 @@ import { FC, useState } from "react"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import appTheme from "../constants/themas";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Loader from "../components/ui/Loader";
+import Loader from "../components/Loader";
 import Field from "../components/ui/form-elements/File";
 import { IUserRegister } from "../types/user.interface";
 import { AuthService } from "../services/auth.service";

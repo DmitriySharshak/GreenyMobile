@@ -6,11 +6,11 @@ import { userRoutes } from "./user.routes";
 import BottomMenu from "../components/BottomMenu/BottomMenu";
 import { useAuth } from "../hooks/useAuth";
 import { adminRoutes } from "./admin.routes";
-import Auth from "../screens/Login";
-import { Alert } from "react-native";
 import Register from "../screens/Register";
 import { useCheckAuth } from "../providers/useCheckAuth";
-import Login from "../screens/Login";
+import Login from "../screens/Auth/Login";
+import Welcome from "../screens/Auth/Welcome";
+import Onboarding from "../screens/Onboarding/Onboarding";
 
 
 const Stack = createNativeStackNavigator<TypeRootStackParamList>()
@@ -40,7 +40,7 @@ const Navigation: FC = () => {
     return (
         <>
         <NavigationContainer ref={navRef}>
-            <Stack.Navigator screenOptions={{headerShown: false }} initialRouteName={user ? "TeamWork": "Login"}>
+            <Stack.Navigator screenOptions={{headerShown: false }} initialRouteName={user ? "TeamWork": "Welcome"}>
 
             {user ? (
 				user.isAdmin ? (
@@ -49,7 +49,10 @@ const Navigation: FC = () => {
 					userRoutes.map(route => <Stack.Screen key={route.name} {...route} />)
 				)
 			) : (
+                //Auth
                 <>
+                    <Stack.Screen name='Welcome' component={Welcome} /> 
+                    <Stack.Screen name='Onboarding' component={Onboarding} /> 
                     <Stack.Screen name='Login' component={Login} />
                     <Stack.Screen name='Register' component={Register} />
                 </>

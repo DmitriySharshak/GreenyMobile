@@ -2,9 +2,19 @@ import { ComponentType } from "react"
 
 export type TypeRootStackParamList = {
     /**
+     * Страница приветствия
+     */
+    Welcome: undefined,
+
+    /**
      * Страница аутентификации
      */
     Login: undefined,
+
+    /**
+     * Страница для погружения
+     */
+    Onboarding: undefined,
 
     /**
      * Страница Регистрации
