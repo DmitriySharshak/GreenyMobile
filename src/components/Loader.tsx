@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { ActivityIndicator } from 'react-native'
-import appTheme from '../constants/themas'
+import { COLORS } from '../constants'
 
 
 const Loader: FC = () => {
-	return <ActivityIndicator size='large' color={appTheme.COLORS.primary} />
+	return <ActivityIndicator size='large' color={COLORS.primary} />
 }
 
 export default Loader

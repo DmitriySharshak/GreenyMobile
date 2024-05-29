@@ -1,6 +1,6 @@
 import { Control, Controller, FieldPath, FieldValues, RegisterOptions } from 'react-hook-form'
 import { StyleSheet, Text, TextInput, TextInputProps, View } from 'react-native'
-import appTheme from '../../../constants/themas'
+import { SIZES } from '../../../constants/themas'
 
 export interface IField<T extends FieldValues>
 	extends Omit<TextInputProps, 'onChange' | 'onChangeText' | 'value'> {
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 		borderRightWidth:0.5,
 		width: "100%",
 		height: 30,
-		marginBottom: appTheme.SIZES.margin,
+		marginBottom: SIZES.margin,
 	},
 	normal: {
 		borderColor:'black',
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
 		borderRightWidth:0.5,
 		width: "100%",
 		height: 40,
-		marginBottom: appTheme.SIZES.margin,
+		marginBottom: SIZES.margin,
 		
 
 	}

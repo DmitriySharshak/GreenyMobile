@@ -10,7 +10,6 @@ export interface IButton extends PressableProps {
 const Button: FC<PropsWithChildren<IButton>> = ({className,	children, ...rest}) => {
 	return (
 		<Pressable {...rest}>
-				{/* {icon && <Feather name={icon} size={18} color='white' />} */}
 				<Text style={styles.text}>
 					{children}
 				</Text>

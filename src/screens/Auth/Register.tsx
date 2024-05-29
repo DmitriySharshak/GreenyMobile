@@ -1,14 +1,14 @@
 import { FC, useState } from "react"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import appTheme from "../constants/themas";
+import { SIZES, appTheme } from "../../constants/themas";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Loader from "../components/Loader";
-import Field from "../components/ui/form-elements/File";
-import { IUserRegister } from "../types/user.interface";
-import { AuthService } from "../services/auth.service";
-import Button from "../components/ui/button/Button";
-import { useTypedNavigation } from "../hooks/useTypedNavigation";
-import Version from "../components/Version";
+import Loader from "../../components/Loader";
+import Field from "../../components/ui/form-elements/File";
+import { IUserRegister } from "../../types/user.interface";
+import { AuthService } from "../../services/auth.service";
+import Button from "../../components/ui/button/Button";
+import { useTypedNavigation } from "../../hooks/useTypedNavigation";
+import Version from "../../components/Version";
 
 
 const Register:  FC = () => {
@@ -37,31 +37,31 @@ const Register:  FC = () => {
       <View style={styles.containerInner}>
         {isLoading ? <Loader></Loader> : ""}
       
-	    <Field<IUserRegister>
+	    {/* <Field<IUserRegister>
           placeholder='Фамилия'
           control={control}
           name='lastName'
           rules={{
             required: 'Укажите фамилию',
           }}
-        />
+        /> */}
 
-		<Field<IUserRegister>
+		{/* <Field<IUserRegister>
           placeholder='Имя'
           control={control}
           name='firstName'
           rules={{
             required: 'Укажите имя',
           }}
-        />
+        /> */}
 
-		<Field<IUserRegister>
+		{/* <Field<IUserRegister>
           placeholder='Отчество'
           control={control}
           name='middleName'
-        />
+        /> */}
 
-		<Field<IUserRegister>
+		{/* <Field<IUserRegister>
 			placeholder='Адрес'
 			control={control}
 			name='address'
@@ -77,46 +77,46 @@ const Register:  FC = () => {
           rules={{
             required: 'Укажите почту',
           }}
-        />
+        /> */}
 
-        <Field<IUserRegister>
+        {/* <Field<IUserRegister>
           placeholder='Номер телефона'
           control={control}
           name='phoneNumber'
           rules={{
             required: 'Укажите номер телефона',
           }}
-        />
+        /> */}
 
-        <Field<IUserRegister>
+        {/* <Field<IUserRegister>
 			placeholder='Пароль'
 			control={control}
 			name='password'
 			secureTextEntry
-		/>
+		/> */}
 		
-      <View style={{justifyContent:"flex-end"}}>
+      {/* <View style={{justifyContent:"flex-end"}}>
 		    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
 				<Text>
 					Вернуться на форму авторизации
 				</Text>
 			</TouchableOpacity>
-		</View>
-      <Button onPress={handleSubmit(onSubmit)} style={{
+		</View> */}
+      {/* <Button onPress={handleSubmit(onSubmit)} style={{
 						backgroundColor: appTheme.COLORS.primary,
 						width: "100%",
 						alignItems: "center",
 						justifyContent: "center",
 						height: 40,
-						borderRadius: appTheme.SIZES.radius,
-						marginTop: appTheme.SIZES.margin,
+						borderRadius: SIZES.radius,
+						marginTop: SIZES.margin,
 					}}>
 						<Text style={{ 
 							color: "white",
 							}}>
 							Регистрация
 						</Text>
-					</Button>
+					</Button> */}
       
     </View>
 

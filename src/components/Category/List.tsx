@@ -3,7 +3,7 @@ import Item from "./Item";
 import { CategoryModel } from "../../Models/Category/CategoryModel";
 import HorizontalList from "../HorizontalList";
 import {ScrollView, StyleSheet, Text, View } from "react-native"
-import appTheme from "../../constants/themas";
+import { SIZES } from "../../constants";
 
 interface ICategoryProps {
     caption: string
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     body:{
         padding:5,
         backgroundColor: "#D3D4D3",
-        borderRadius: appTheme.SIZES.radius,
+        borderRadius: SIZES.radius,
         alignItems: "flex-start",
     },
 

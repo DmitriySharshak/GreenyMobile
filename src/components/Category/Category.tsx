@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from "react"
 import {View } from "react-native"
 import { useTypedNavigation } from "../../hooks/useTypedNavigation";
-import appTheme from "../../constants/themas";
 
 import { CategoryService } from "../../services/category.service";
 import { CategoryModel } from "../../Models/Category/CategoryModel";
 import List from "./List";
+import { SIZES } from "../../constants";
 
 
 
@@ -52,8 +52,8 @@ const Category = () => {
 
     return (<>
             <View style={{ 
-                paddingLeft: appTheme.SIZES.padding, 
-                paddingRight: appTheme.SIZES.padding  
+                paddingLeft: SIZES.padding, 
+                paddingRight: SIZES.padding  
             }}>
 
              <List key={1} caption="Категории" items={categories} onSelectedHandler={onSelectedCategory} selected={categorySelected}></List>

@@ -1,13 +1,13 @@
 import React, { FC, useRef, useState } from "react"
 import { Text, View, FlatList } from "react-native";
-import appTheme from "../../constants/themas";
 import Button from "../../components/ui/button/Button";
 import { useTypedNavigation } from "../../hooks/useTypedNavigation";
+import { SIZES } from "../../constants";
 
 const Onboarding = () => {
 
     //svg
-    const controlX = appTheme.SIZES.width / 2; //control center pointer`s x coordinate 
+    const controlX = SIZES.width / 2; //control center pointer`s x coordinate 
     const [isLastItem, setIsLastItem] = useState(false);
 
     const navigation = useTypedNavigation();
@@ -22,7 +22,7 @@ const Onboarding = () => {
         if(currentIndex.current < onBoardingScreens) {
             currentIndex.current +=1
             const nextIndex = currentIndex.current
-            const offset = nextIndex * appTheme.SIZES.width
+            const offset = nextIndex * SIZES.width
 
             screenFlatListRef?.current?.scrollToOffset({
                 offset,

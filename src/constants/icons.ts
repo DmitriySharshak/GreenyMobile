@@ -15,11 +15,19 @@ const gardenGrey = require('../assets/icons/footer/garden-grey.png');
 const gardenGreen = require('../assets/icons/footer/garden-green.png');
 
 const phone = require('../assets/icons/phone.png');
+const lock = require('../assets/icons/lock.png');
+const eye = require('../assets/icons/eye.png');
+const eyeClosed = require('../assets/icons/eye_closed.png');
+const checkbox_on = require('../assets/icons/checkbox_on.png');
+const checkbox_off = require('../assets/icons/checkbox_off.png');
 const google = require('../assets/icons/google.png');
 const telegram = require('../assets/icons/telegram.png');
 const facebook = require('../assets/icons/facebook.png');
 
+const angleArrowLeft = require('../assets/icons/angle_arrow_left.png');
+
 
 export default {shopingCart, profile, house, soil, teamwork, menu,
                 cartGrey, cartGreen, networkGrey, networkGreen, profileGrey, profileGreen, gardenGrey, gardenGreen,
-                phone, google, telegram, facebook};
+                phone, lock, eye, eyeClosed,checkbox_on, checkbox_off, google, telegram, facebook,
+                angleArrowLeft};

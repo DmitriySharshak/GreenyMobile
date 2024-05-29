@@ -1,7 +1,7 @@
 import { FC } from "react";
 import ImageComponent from "../ImageComponent";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import appTheme from "../../constants/themas";
+import { COLORS, SIZES } from "../../constants";
 
 interface IItemProps {
 	id: number
@@ -30,15 +30,15 @@ const styles = StyleSheet.create({
         padding: 4,
         backgroundColor: "#E2EBE1",
         borderWidth: 1,
-        borderRadius: appTheme.SIZES.radius,
+        borderRadius: SIZES.radius,
         alignItems: "center",
     },
     container_selected:{
         backgroundColor: "#4CFA45",
     },
     container__text:{
-        color: appTheme.COLORS.black,
-        fontSize: appTheme.SIZES.base
+        color: COLORS.black,
+        fontSize: SIZES.base
     }
 
   })

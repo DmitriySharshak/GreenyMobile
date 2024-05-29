@@ -1,15 +1,15 @@
 import React, { FC, PropsWithChildren } from 'react'
 import { Image, Pressable, PressableProps, StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { COLORS, FONTS, SIZES } from '../constants'
+import { COLORS } from '../constants'
 
-export interface IIconTextButton extends PressableProps {
+export interface IIconButton extends PressableProps {
 	containerStyle: any,
     icon: any,
-    label: string,
+    iconStyle: any,
     onPress: () => void
 }
 
-const IconTextButton: FC<IIconTextButton> = ({containerStyle, icon, label, onPress})=>{
+const IconButton: FC<IIconButton> = ({containerStyle, icon, onPress})=>{
     return (
         <TouchableOpacity style={{
             flexDirection:"row",
@@ -29,23 +29,17 @@ const IconTextButton: FC<IIconTextButton> = ({containerStyle, icon, label, onPre
                 source={icon}
                 resizeMode="contain"
                 style={{
-                    width: 30,
-                    height: 30, 
-                    borderRadius:15
+                    width: 25,
+                    height: 25, 
+                    tintColor: COLORS.black
                     }} />
         
-        {/**Label */}
-        <Text style={{
-           ...FONTS.h4,
-           marginLeft: SIZES.radius,
-           color: COLORS.black
-        }}>{label}</Text>
 
         </TouchableOpacity>
     )
 }
 
-export default IconTextButton
+export default IconButton
 
 
 

@@ -1,6 +1,6 @@
 import { Children, FC } from "react";
 import { Image, StyleSheet, View } from "react-native";
-import appTheme from "../constants/themas";
+import { COLORS } from "../constants";
 
 
 export interface IImageComponent {
@@ -13,7 +13,7 @@ const ImageComponent:FC<IImageComponent>=({selected, image, size})=> {
 
     return <View
             style={{
-            backgroundColor: (selected) ? appTheme.COLORS.white : appTheme.COLORS.lightGray,
+            backgroundColor: (selected) ? COLORS.white : COLORS.black,
             alignItems: "center",
             justifyContent: "center",
             width: size,

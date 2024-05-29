@@ -1,6 +1,6 @@
 import { FC, useReducer, useState } from "react"
 import { Button, StyleSheet, TouchableOpacity } from "react-native"
-import appTheme from "../../constants/themas"
+import appTheme, { COLORS, SIZES } from "../../constants/themas"
 import { View, Image, Text } from "react-native"
 import ImageComponent from "../ImageComponent"
 import { IProduct } from "./product.interface"
@@ -38,14 +38,14 @@ const Product: FC<IProduct> = props => {
     return (<>
         <View
          style={{
-                padding: appTheme.SIZES.padding,
+                padding: SIZES.padding,
                 width: 180,
-                backgroundColor: appTheme.COLORS.white,
-                borderRadius: appTheme.SIZES.radius,
+                backgroundColor: COLORS.white,
+                borderRadius: SIZES.radius,
                 flexDirection:"column",
                 justifyContent: "space-between",
-                marginTop: appTheme.SIZES.margin,
-                marginRight:appTheme.SIZES.margin
+                marginTop: SIZES.margin,
+                marginRight:SIZES.margin
         }}
         >
             <ImageComponent iconName={props.iconName} selected={false} size={40}></ImageComponent>
@@ -95,9 +95,9 @@ const styles = StyleSheet.create({
     },
 	view: {
         flexDirection:"column",
-		marginTop: appTheme.SIZES.margin,
-        borderRadius:appTheme.SIZES.radius,
-        backgroundColor: appTheme.COLORS.lightGray,
+		marginTop: SIZES.margin,
+        borderRadius:SIZES.radius,
+        backgroundColor: COLORS.lightGray,
         alignItems: "center",
         justifyContent: "space-between",
 	},
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         //justifyContent:"center"
      },
      marginTop: {
-        marginTop: appTheme.SIZES.margin
+        marginTop: SIZES.margin
      }
   })
 

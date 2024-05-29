@@ -6,12 +6,10 @@ import { userRoutes } from "./user.routes";
 import BottomMenu from "../components/BottomMenu/BottomMenu";
 import { useAuth } from "../hooks/useAuth";
 import { adminRoutes } from "./admin.routes";
-import Register from "../screens/Register";
+import Register from "../screens/Auth/Register";
 import { useCheckAuth } from "../providers/useCheckAuth";
-import Login from "../screens/Auth/Login";
-import Welcome from "../screens/Auth/Welcome";
-import Onboarding from "../screens/Onboarding/Onboarding";
-
+import { Login, Onboarding, Welcome } from "../screens";
+import TeamWork from "../screens/Teamwork";
 
 const Stack = createNativeStackNavigator<TypeRootStackParamList>()
 
@@ -38,34 +36,36 @@ const Navigation: FC = () => {
     useCheckAuth(currentRoute)
     
     return (
-        <>
-        <NavigationContainer ref={navRef}>
-            <Stack.Navigator screenOptions={{headerShown: false }} initialRouteName={user ? "TeamWork": "Welcome"}>
+            <>
+                <NavigationContainer ref={navRef}>
+                    <Stack.Navigator screenOptions={{headerShown: false }} initialRouteName={user ? "TeamWork": "Welcome"}>
 
-            {user ? (
-				user.isAdmin ? (
-					routes.map(route => <Stack.Screen key={route.name} {...route} />)
-				) : (
-					userRoutes.map(route => <Stack.Screen key={route.name} {...route} />)
-				)
-			) : (
-                //Auth
-                <>
-                    <Stack.Screen name='Welcome' component={Welcome} /> 
-                    <Stack.Screen name='Onboarding' component={Onboarding} /> 
-                    <Stack.Screen name='Login' component={Login} />
-                    <Stack.Screen name='Register' component={Register} />
-                </>
-			)}
-            </Stack.Navigator>
-        </NavigationContainer>
+                    {user ? (
+                        user.isAdmin ? (
+                            routes.map(route => <Stack.Screen key={route.name} {...route} />)
+                        ) : (
+                            userRoutes.map(route => <Stack.Screen key={route.name} {...route} />)
+                        )
+                    ) : (
+                        /** Auth */
+                        <>
+                            <Stack.Screen name='TeamWork' component={TeamWork} /> 
+                            <Stack.Screen name='Welcome' component={Welcome} /> 
+                            <Stack.Screen name='Login' component={Login} />
+                            <Stack.Screen name='Register' component={Register} />
+                            <Stack.Screen name='Onboarding' component={Onboarding} /> 
+                            
+                        </>
+                    )}
+                    </Stack.Navigator>
+                </NavigationContainer>
 
-        {user && currentRoute ? 
-            (<BottomMenu navigate={navRef.navigate} currentRoute={currentRoute}></BottomMenu>)
-            :
-            (<></>)
-        }
-        </>
+                {user && currentRoute ? 
+                    (<BottomMenu navigate={navRef.navigate} currentRoute={currentRoute}></BottomMenu>)
+                    :
+                    (<></>)
+                }
+            </>
         //<ShoppingBacket min={0} max={0}></ShoppingBacket>
     )
 }

@@ -7,10 +7,8 @@ import Teamwork from "../screens/Teamwork";
 import Soil from "../screens/Soil";
 import { IRoute } from "./navigation.types";
 import Product from "../screens/Product";
-import Register from "../screens/Register";
-import Login from "../screens/Auth/Login";
-import Welcome from "../screens/Auth/Welcome";
-import Onboarding from "../screens/Onboarding/Onboarding";
+import Register from "../screens/Auth/Register";
+import { Login, Onboarding, Welcome } from "../screens";
 
 export const userRoutes: IRoute[] = [
       {
